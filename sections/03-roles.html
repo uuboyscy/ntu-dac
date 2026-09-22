@@ -3,81 +3,90 @@
   <div class="slide-notes" hidden><p>這一段用問題與產出去講三個角色。不同公司會重疊，尤其小團隊一個人可能同時做兩三種事。</p></div>
 </section>
 
-<section class="slide" id="roles-map" role="group" aria-label="DA DS DE：責任地圖">
+<section class="slide" id="roles-map" role="group" aria-label="DA DS DE：角色比較與職能地圖">
   <div class="pad">
     <p class="eyebrow"><span class="num">03</span> 初步認識 DA／DS／DE</p>
-    <h2>三種角色，起手式不一樣</h2>
-    <div class="roles-map-layout">
-      <div class="roles-map__left">
-        <p class="lede">同一份資料可以被三種角色使用，差別在於每個角色先處理的問題不同。</p>
-        <div class="role-cards">
-          <article class="role-card role-card--da">
-            <div class="role-card__role">DA<span>Data Analyst</span></div>
-            <div><h3>先問：到底發生了什麼？</h3><p>定義指標、找出趨勢與例外，幫團隊看懂現況。</p></div>
-          </article>
-          <article class="role-card role-card--ds">
-            <div class="role-card__role">DS<span>Data Scientist</span></div>
-            <div><h3>先問：什麼可能發生？</h3><p>建立假設、訓練模型，驗證預測能不能用。</p></div>
-          </article>
-          <article class="role-card role-card--de">
-            <div class="role-card__role">DE<span>Data Engineer</span></div>
-            <div><h3>先問：資料能不能可靠到達？</h3><p>設計 pipeline、品質檢查與恢復機制，讓資料持續可用。</p></div>
-          </article>
-        </div>
-      </div>
-      <div class="role-venn">
-        <div class="venn-diagram" aria-label="DA、DS、DE 三種職能的交集圖">
-          <span class="venn-circle venn-circle--da" aria-hidden="true"></span>
-          <span class="venn-circle venn-circle--ds" aria-hidden="true"></span>
-          <span class="venn-circle venn-circle--de" aria-hidden="true"></span>
-          <span class="venn-label venn-label--da"><strong>DA</strong><small>看懂現況</small></span>
-          <span class="venn-label venn-label--ds"><strong>DS</strong><small>預測未來</small></span>
-          <span class="venn-label venn-label--de"><strong>DE</strong><small>穩定供應</small></span>
-          <span class="venn-region venn-region--top">定義問題</span>
-          <span class="venn-region venn-region--left">資料可用</span>
-          <span class="venn-region venn-region--right">模型能上線</span>
-          <span class="venn-region venn-region--center">可被信任</span>
-        </div>
-      </div>
+    <h2>三種角色，起手式與責任不同</h2>
+    <p class="lede">同一份資料可以被三種角色使用，差別在於面對同一個目標時，各自先解決哪種問題與主要風險。</p>
+    <div class="role-table-wrap">
+      <table class="role-compare-table" aria-label="DA、DS、DE 角色比較表">
+        <thead>
+          <tr>
+            <th scope="col" class="role-col-role">角色</th>
+            <th scope="col" class="role-col-question">常問問題</th>
+            <th scope="col" class="role-col-deliver">決定與交付</th>
+            <th scope="col" class="role-col-risk">主要風險</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="role-row role-row--da">
+            <th scope="row" class="role-cell-title">
+              <span class="role-badge role-badge--da">DA</span>
+              <span class="role-name-zh">資料分析師</span>
+              <span class="role-name-en">Data Analyst</span>
+            </th>
+            <td>
+              <strong>到底發生了什麼？</strong>
+              <p>定義指標，找出趨勢與例外。</p>
+            </td>
+            <td>
+              <strong>指標定義與分析建議</strong>
+              <p>決定比較口徑，交付分析結果與限制。</p>
+            </td>
+            <td>
+              <strong>口徑不一致</strong>
+              <p>資料涵蓋範圍或期間有缺口，結論難以支持決策。</p>
+            </td>
+          </tr>
+          <tr class="role-row role-row--ds">
+            <th scope="row" class="role-cell-title">
+              <span class="role-badge role-badge--ds">DS</span>
+              <span class="role-name-zh">資料科學家</span>
+              <span class="role-name-en">Data Scientist</span>
+            </th>
+            <td>
+              <strong>什麼可能發生？</strong>
+              <p>建立假設，驗證預測是否有用。</p>
+            </td>
+            <td>
+              <strong>模型、實驗與評估</strong>
+              <p>選擇評估方式，交代結果的適用範圍。</p>
+            </td>
+            <td>
+              <strong>證據無法用在實際情境</strong>
+              <p>訓練資料不具代表性，使用時拿不到相同特徵。</p>
+            </td>
+          </tr>
+          <tr class="role-row role-row--de">
+            <th scope="row" class="role-cell-title">
+              <span class="role-badge role-badge--de">DE</span>
+              <span class="role-name-zh">資料工程師</span>
+              <span class="role-name-en">Data Engineer</span>
+            </th>
+            <td>
+              <strong>資料能不能可靠到達？</strong>
+              <p>設計管線，維持資料品質與可用性。</p>
+            </td>
+            <td>
+              <strong>資料模型與可重跑流程</strong>
+              <p>決定更新與恢復方式，交付檢查規則與監控。</p>
+            </td>
+            <td>
+              <strong>資料缺漏或無法恢復</strong>
+              <p>流程延遲、結果無法追溯，出錯後難以回補。</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="role-map-footer">
+      <div class="role-map-note">不同公司有不同分工，三種角色也會重疊。</div>
+      <div class="role-map-note">選角色時，想想你願意長期處理哪類問題。</div>
     </div>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>先講左側三張卡片：DA 先理解現況，DS 先處理預測與模型，DE 先確保資料可靠到達。再看右側三圓圖，說明三種職能不是互斥的，實際工作會在定義問題、資料可用、模型上線等地方交集。</p><p>中央的「可被信任」不是另一個職稱，而是三者一起把資料、模型與決策做成能使用的結果。工具清單先放旁邊；SQL、Python、BI、模型、Pipeline 都是手段。不同公司會重疊，尤其小團隊一個人可能同時做兩三種事。</p></div>
-</section>
-
-<section class="slide" id="roles-boundary" role="group" aria-label="DA DS DE：如何判斷適合哪個角色">
-  <div class="pad">
-    <p class="eyebrow"><span class="num">03</span> 不把人貼標籤</p>
-    <h2>不要先問自己是哪一型<br>先看你願意長期接住哪種問題</h2>
-    <p class="boundary-lede">角色不是性格分類，而是你願意反覆處理、持續累積，並對結果負責的工作。</p>
-    <div class="boundary-grid">
-      <article class="boundary-card boundary-card--da">
-        <div class="boundary-card__head"><span class="boundary-code">DA<small>問題定義</small></span><h3>把模糊問題定義清楚</h3></div>
-        <span class="boundary-label">長期接住</span>
-        <p class="boundary-problem">需求混亂、指標不一致，團隊不知道到底要解決什麼。</p>
-        <span class="boundary-label">工作鏈</span>
-        <div class="boundary-flow" aria-label="DA 工作鏈"><span>模糊需求</span><span>判準</span><span>決策</span></div>
-        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">問題定義、決策準則</p></div>
-        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">把模糊變清楚，也要面對別人不同意你的取捨。</p></div>
-      </article>
-      <article class="boundary-card boundary-card--ds">
-        <div class="boundary-card__head"><span class="boundary-code">DS<small>證據建立</small></span><h3>在不確定中建立證據</h3></div>
-        <span class="boundary-label">長期接住</span>
-        <p class="boundary-problem">資訊不足、答案未明，團隊仍要判斷哪些方向值得投入。</p>
-        <span class="boundary-label">工作鏈</span>
-        <div class="boundary-flow" aria-label="DS 工作鏈"><span>假設</span><span>實驗</span><span>證據</span></div>
-        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">測試結果、方向修正</p></div>
-        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">在沒有標準答案時推進，也接受原本的想法可能被證偽。</p></div>
-      </article>
-      <article class="boundary-card boundary-card--de">
-        <div class="boundary-card__head"><span class="boundary-code">DE<small>系統交接</small></span><h3>讓系統可追溯、可重跑</h3></div>
-        <span class="boundary-label">長期接住</span>
-        <p class="boundary-problem">資料來源不清、流程容易失效，結果無法重現或交接。</p>
-        <span class="boundary-label">工作鏈</span>
-        <div class="boundary-flow" aria-label="DE 工作鏈"><span>資料流</span><span>錯誤追查</span><span>可交接</span></div>
-        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">檢查規則、重跑流程</p></div>
-        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">讓成果不只依賴自己，也接住不易被看見、卻會影響整體的工作。</p></div>
-      </article>
-    </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 6 分鐘。</strong>DA 會問期間、回補與去重規則；DS 會問特徵是否可用、歷史資料與品質是否足夠；DE 則看影響範圍、監控與如何恢復。</p>
+    <p>三個角色名稱中英對照：DA（Data Analyst 資料分析師）、DS（Data Scientist 資料科學家）、DE（Data Engineer 資料工程師）。DA 側重定義與洞察，DS 側重假設與預測證據，DE 側重管線穩定、資料契約與可追溯重跑。不同公司會有不同邊界與重疊；特別在小團隊，一人可能包辦從資料管線到報表分析。</p>
+    <p>引導學生思考：不需要急著幫自己貼標籤，而是看自己願意長期面對哪類挫折與挑戰——是面對模糊需求並勇敢下定義（DA）、是在不確定中接受假設可能被推翻（DS），還是反覆處理管線失效、重跑回補與底層維運（DE）。接下來用會員流失情境，看這些問題如何在同一個團隊裡接起來。</p>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>不要把 DA、DS、DE 講成性格分類。逐欄比較四件事：長期接住的問題、反覆做的工作、留下的產出，以及必須承擔的責任。</p><p>DA 面對的是定義與取捨，DS 面對的是不確定與證據，DE 面對的是可靠性、追溯與交接。重點不是判斷自己像哪個角色，而是看自己願意長期接住哪種問題。</p></div>
 </section>
