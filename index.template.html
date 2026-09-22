@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{TITLE}} — NTU DAC</title>
+<meta name="description" content="給臺大資料分析與決策社的資料職涯分享：資料價值鏈、DA／DS／DE、工程實務、職涯路徑與 AI 時代的準備。">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#deck">跳到簡報內容</a>
+<div class="stage" id="stage">
+<main class="deck" id="deck" aria-roledescription="簡報" aria-label="{{TITLE}}">
+<!-- SECTION_CONTENT -->
+</main>
+</div>
+
+<div class="chrome" id="chrome">
+  <div class="progress" id="progress" role="presentation"><span class="progress-bar" id="progressBar"></span></div>
+  <div class="chrome-row">
+    <p class="brand">數據職涯導覽 <span>· NTU DAC</span></p>
+    <div class="controls">
+      <button type="button" class="btn" id="btnNotes" aria-pressed="false" title="講者備註（N）">備註</button>
+      <button type="button" class="btn" id="btnHelp" aria-pressed="false" title="快捷鍵說明（?）">?</button>
+      <button type="button" class="btn btn--nav" id="btnPrev" title="上一張（←）"><span aria-hidden="true">←</span><span class="sr-only">上一張投影片</span></button>
+      <p class="counter" id="counter" aria-hidden="true"><span id="cur">1</span><span class="counter-sep">/</span><span id="total">0</span></p>
+      <button type="button" class="btn btn--nav" id="btnNext" title="下一張（→）"><span aria-hidden="true">→</span><span class="sr-only">下一張投影片</span></button>
+    </div>
+  </div>
+</div>
+
+<aside class="panel panel--notes" id="notes" hidden aria-labelledby="notesTitle">
+  <div class="panel-head"><h2 id="notesTitle">講者備註 <span class="panel-sub" id="notesFor"></span></h2><button type="button" class="btn btn--close" id="btnNotesClose"><span aria-hidden="true">✕</span><span class="sr-only">關閉講者備註</span></button></div>
+  <div class="panel-body" id="notesBody"></div>
+</aside>
+<div class="panel panel--help" id="help" hidden role="dialog" aria-modal="false" aria-labelledby="helpTitle">
+  <div class="panel-head"><h2 id="helpTitle">鍵盤快捷鍵</h2><button type="button" class="btn btn--close" id="btnHelpClose"><span aria-hidden="true">✕</span><span class="sr-only">關閉說明</span></button></div>
+  <div class="panel-body"><dl class="keys"><div><dt><kbd>→</kbd><kbd>空白</kbd><kbd>PgDn</kbd></dt><dd>下一張</dd></div><div><dt><kbd>←</kbd><kbd>PgUp</kbd></dt><dd>上一張</dd></div><div><dt><kbd>Home</kbd> / <kbd>End</kbd></dt><dd>第一張 / 最後一張</dd></div><div><dt><kbd>1</kbd>–<kbd>9</kbd><kbd>0</kbd></dt><dd>跳到前 10 張</dd></div><div><dt><kbd>N</kbd></dt><dd>講者備註</dd></div><div><dt><kbd>F</kbd></dt><dd>全螢幕</dd></div><div><dt><kbd>?</kbd></dt><dd>顯示／關閉說明</dd></div><div><dt><kbd>Esc</kbd></dt><dd>關閉面板</dd></div></dl><p class="keys-foot">觸控裝置可左右滑動切換；<kbd>⌘</kbd>／<kbd>Ctrl</kbd> + <kbd>P</kbd> 可列印或輸出 PDF。</p></div>
+</div>
+<p class="sr-only" id="live" role="status" aria-live="polite"></p>
+<script src="assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.claude/
+tmp/
+scripts/claude-session.sh
+CLAUDE.md
+AGENTS.md

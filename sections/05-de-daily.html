@@ -1,0 +1,25 @@
+<section class="slide slide--dark section-divider" id="daily-divider" role="group" aria-label="資料工程師日常：章節開場">
+  <div class="pad"><p class="section-code">05 / DE DAILY</p><h2>資料工程師的日常，<br>大部分不在 demo 裡</h2><div class="divider-line"></div><p class="section-intro">寫 Pipeline 只是其中一段。更長的時間，花在問清楚、處理例外、讓流程能重跑、讓告警有人看，以及把系統交給下一個人。</p></div>
+  <div class="slide-notes" hidden><p>這一段讓學生建立實際期待。別把 DE 簡化成 ETL，也別把維運講成無聊雜事；可靠性就是從這些工作累積出來的。</p></div>
+</section>
+
+<section class="slide" id="daily-loop" role="group" aria-label="資料工程師日常：一個需求如何落地">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">05</span> DE 的工作迴圈</p>
+    <h2>一個需求進來，<br>工程師先處理這些問題</h2>
+    <div class="day-layout"><div class="day-spine"><div class="day-step"><h3>1. 問清楚來源與用途</h3><p>誰產生？誰使用？更新多久？成功的定義是什麼？</p></div><div class="day-step"><h3>2. 選擇處理方式</h3><p>批次、微批次或即時；重點是匹配決策時點與失敗成本。</p></div><div class="day-step"><h3>3. 建立可重跑的流程</h3><p>轉換邏輯、資料模型、重試、回補與版本控制都要想。</p></div><div class="day-step"><h3>4. 讓錯誤先被看見</h3><p>品質、freshness、schema 變更、告警與責任人。</p></div><div class="day-step"><h3>5. 交付給下游，遇到新問題再修</h3><p>和 DA、DS、產品、資安與營運一起處理新需求。</p></div></div><div class="day-artifact"><article class="artifact"><span class="mono">INPUT</span><h3>資料契約</h3><p>欄位、型別、更新頻率、擁有者與變更規則。</p></article><article class="artifact"><span class="mono">PROCESS</span><h3>Pipeline</h3><p>能觀測、能重跑、能處理延遲與部分失敗。</p></article><article class="artifact"><span class="mono">CONTROL</span><h3>品質與血緣</h3><p>知道哪個檢查失敗，也知道影響哪些下游。</p></article><article class="artifact"><span class="mono">HANDOFF</span><h3>文件與告警</h3><p>讓另一個人接手時，不必只靠口頭記憶。</p></article></div></div>
+    <p class="quote">工程最後要交付的是一條能重跑的 Pipeline，讓<strong>下游在關鍵時刻敢用這份資料</strong>。</p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>可以挑一個工作日常說明：很多時間花在上游欄位變更、資料延遲、回補、告警與下游定義不一致。</p><p>提醒學生：這些事情聽起來不炫技，卻決定資料平台是否能被信任，也決定你是否能從「會寫」成長為「能負責」。</p></div>
+</section>
+
+<section class="slide" id="daily-tradeoff" role="group" aria-label="資料工程師日常：技術判斷">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">05</span> DE 的判斷力</p>
+    <h2>需求說要即時，<br>架構也要先算過</h2>
+    <p class="lede">資料工程師會一起看更新頻率、可靠度、團隊能不能維護，以及成本，再決定要不要把架構做複雜。</p>
+    <div class="split split--equal"><div class="note-box"><h3>先問四件事</h3><ul><li>決策什麼時候發生？</li><li>延遲多久會造成實際損失？</li><li>尖峰流量與重放需求如何？</li><li>團隊是否有能力長期維運？</li></ul></div><div class="note-box"><h3>再比較三種方案</h3><ul><li><strong>Batch：</strong>簡單、便宜、適合固定週期。</li><li><strong>Micro-batch：</strong>縮短等待，但仍保留部分可控性。</li><li><strong>Streaming：</strong>反應快，但狀態、重放、順序、監控與成本都更複雜。</li></ul></div></div>
+    <p class="kicker"><strong>最後選的方案，要對應需求，也要說清楚風險和代價。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>streaming 在該用的地方很重要。重點放在「即時」要由業務決策時點與風險推導，不能只看工具熱度。</p></div>
+</section>

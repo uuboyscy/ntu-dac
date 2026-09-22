@@ -1,0 +1,26 @@
+<section class="slide slide--dark section-divider" id="work-divider" role="group" aria-label="資料工作實務：章節開場">
+  <div class="pad"><p class="section-code">04 / WORK IN PRACTICE</p><h2>從一起定義，到把資料交付給下游</h2><div class="divider-line"></div><p class="section-intro">角色合作和 DE 日常，其實是同一件事：把問題做成別人敢用、也接得起來的系統。</p></div>
+  <div class="slide-notes" hidden><p>這一段把原本的 Collaboration 和 DE Daily 合在一起。角色合作不是開會分工而已，最後要落在資料能不能被使用、被驗證、被維護。</p></div>
+</section>
+
+<section class="slide" id="work-collaboration" role="group" aria-label="資料工作實務：角色如何一起把問題做完">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">04</span> 共同問題</p>
+    <h2>會員可能流失時，<br>三個角色怎麼一起把問題做完</h2>
+    <p class="lede">先對齊問題，再決定要不要做模型；最後還要讓結果能持續更新、有人接手。</p>
+    <div class="collab-flow"><article class="collab-node"><span class="role">DA · 定義</span><h3>先把「流失」說清楚</h3><p>觀察期間、納入族群、例外與成功條件先定義，避免拿模糊標籤訓練模型。</p></article><div class="collab-arrow">→</div><article class="collab-node center"><span class="role">共同決策</span><h3>這個結果要用來做什麼？</h3><p>是發通知、給優惠、調整產品，還是只想理解現象？錯判成本與決策時點要先說清楚。</p></article><div class="collab-arrow">→</div><article class="collab-node"><span class="role">DS · DE</span><h3>驗證，然後持續供應</h3><p>DS 看證據與限制；DE 確認特徵資料能更新、重跑，訓練與上線拿到的資料一致。</p></article></div>
+    <div class="contract"><div class="contract-item"><h3>定義</h3><p>期間、族群、例外與成功條件。</p></div><div class="contract-item"><h3>驗證</h3><p>資料一致，結果附帶適用範圍與限制。</p></div><div class="contract-item"><h3>交付</h3><p>更新頻率、owner、失效與回補方式。</p></div></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>用會員流失案例把三種工作接起來。DA 的定義會影響 DS 的標籤，DS 的需求會影響 DE 的資料契約；業務的決策成本則會反過來決定要不要做模型。</p><p>三個底部詞是交付前的最低共識：先把問題定義清楚，再確認資料與結果的限制，最後留下更新頻率、owner、失效訊號與回補方式。合作不是把工作切開，而是讓下一個人不用重新猜前面發生了什麼。</p></div>
+</section>
+
+<section class="slide" id="work-de-daily" role="group" aria-label="資料工作實務：資料工程師日常與架構取捨">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">04</span> DE DAILY</p>
+    <h2>DE 的日常，<br>不是把 Pipeline 寫完就結束</h2>
+    <p class="lede">每個需求都要在即時性、可靠度、維運能力與成本之間做選擇。</p>
+    <div class="day-layout"><div class="day-spine"><div class="day-step"><h3>1. 問清楚來源與用途</h3><p>誰產生、誰使用、多久更新，成功的定義是什麼？</p></div><div class="day-step"><h3>2. 選批次、微批次或即時</h3><p>由決策時點與失敗成本推導，不先追工具熱度。</p></div><div class="day-step"><h3>3. 建立可重跑的流程</h3><p>轉換、重試、回補與版本控制都要能走得通。</p></div><div class="day-step"><h3>4. 讓錯誤先被看見</h3><p>品質、freshness、schema、告警與 owner 要連起來。</p></div><div class="day-step"><h3>5. 交付給下游，持續修</h3><p>文件、血緣與新需求都會回到這條工作迴圈。</p></div></div><div class="day-artifact"><article class="artifact"><span class="mono">INPUT</span><h3>資料契約</h3><p>欄位、型別、更新頻率、擁有者與變更規則。</p></article><article class="artifact"><span class="mono">PROCESS</span><h3>Pipeline</h3><p>能觀測、能重跑，也能處理延遲與部分失敗。</p></article><article class="artifact"><span class="mono">CONTROL</span><h3>品質與血緣</h3><p>知道哪個檢查失敗，也知道影響哪些下游。</p></article><article class="artifact"><span class="mono">HANDOFF</span><h3>文件與告警</h3><p>讓下一個人接手時，不必只靠口頭記憶。</p></article></div></div>
+    <p class="quote">即時不是預設答案；<strong>選的方案要對應需求，也要能長期維護。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>這頁把 DE 的日常和架構判斷放在一起。很多時間花在上游欄位變更、資料延遲、回補、告警與下游定義不一致，不只是寫 Pipeline。</p><p>Batch、Micro-batch、Streaming 都是選項，不是職稱或能力高低。即時需求要由業務決策時點、延遲損失、重放需求、團隊維運能力與成本推導。最後收在四個交付物：資料契約、能重跑的 Pipeline、品質與血緣、文件與告警。</p></div>
+</section>

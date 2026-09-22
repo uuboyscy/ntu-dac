@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>數據職涯導覽 — NTU DAC</title>
+<meta name="description" content="給臺大資料分析與決策社的資料職涯分享：資料價值鏈、DA／DS／DE、工程實務、職涯路徑與 AI 時代的準備。">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#deck">跳到簡報內容</a>
+<div class="stage" id="stage">
+<main class="deck" id="deck" aria-roledescription="簡報" aria-label="數據職涯導覽">
+<!-- SECTION: 01-intro -->
+<section class="slide slide--dark slide--cover" id="intro-cover" role="group" aria-label="封面：數據職涯導覽">
+  <div class="pad">
+    <p class="cover-mark">NTU DAC · CAREER FIELD NOTES</p>
+    <h1 class="cover-title">數據職涯<br><em>導覽</em></h1>
+    <p class="cover-sub">意外走進資料工程，後來走到 Data Architect</p>
+    <footer class="cover-foot"><div><p class="name">施丞優　Allen Shi</p><p class="mono">Data Engineering · Data Architecture · Engineering Lead</p></div><p class="mono">2026.09.30　·　60 min + Q&amp;A</p></footer>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>開場，約 2 分鐘。</strong>今天不會從工具清單開始，也不需要大家現在就決定職稱。我會先講自己的路徑，再把這段經驗放回資料工作的全貌裡。</p>
+    <p>一開始我也不知道自己會走到 Data Engineering，更不可能預先安排好每一步。很多選擇，都是遇到資料量、失敗、部署、權限與溝通問題後，才慢慢看懂自己適合解什麼問題。</p>
+  </div>
+</section>
+
+<section class="slide" id="intro-now" role="group" aria-label="自我介紹：我現在做的事">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">01</span> 自我介紹 · NOW</p>
+    <h2>我現在同時處理<br>資料管線與系統設計</h2>
+    <div class="split split--wide">
+      <div class="stack">
+        <p class="lede">現任歐洲資料顧問公司的 Engineering Lead。我的工作常從一句很模糊的需求開始，最後要變成一個跑得動、有人維護、成本也付得起的系統。</p>
+        <dl class="profile">
+          <div class="profile-line"><dt>我負責</dt><dd>Data Engineering、Cloud Architecture、Data Architecture 與系統架構規劃。</dd></div>
+          <div class="profile-line"><dt>我需要判斷</dt><dd>資料量、存取模式、處理流程、資安限制、穩定性、成本與未來的變化。</dd></div>
+          <div class="profile-line"><dt>我需要協作</dt><dd>和客戶、產品、分析、資料科學與工程團隊，把需求、風險與限制整理成一個能執行的技術決策。</dd></div>
+        </dl>
+      </div>
+      <div class="note-box">
+        <h3>一個常見的工作場景</h3>
+        <p>客戶說：「我們需要即時資料平台。」</p>
+        <p>我會先把幾個基本問題問清楚：</p>
+        <ul>
+          <li>哪個決策真的需要即時？</li>
+          <li>延遲幾分鐘會造成什麼損失？</li>
+          <li>資料量與尖峰怎麼變化？</li>
+          <li>誰定義正確？失敗時誰處理？</li>
+        </ul>
+      </div>
+    </div>
+    <p class="kicker"><strong>我通常先問四件事：誰會用、要多快、怎麼驗證、出錯誰負責。</strong></p>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 4 分鐘。</strong>不要念職稱。用「一句需求怎麼被拆開」讓大家知道 Engineering Lead 的工作同時包含技術判斷、協作與交付，不會只停在管理或寫一條更大的 Pipeline。</p>
+    <p>顧問情境常需要在不完整資訊下先建立假設，再用問題、資料與小型驗證把假設修正。技術能力很重要；如果無法說明取捨，方案就很難落地。</p>
+  </div>
+</section>
+
+<section class="slide" id="intro-path" role="group" aria-label="自我介紹：關於我與職涯路徑">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">01</span> 自我介紹</p>
+    <h2>關於我</h2>
+    <p class="lede">從數學與問題拆解，走到資料平台與架構。</p>
+    <div class="about-me-layout">
+      <article class="about-me-card">
+        <h3 class="about-me-card__title">我的背景</h3>
+        <div class="about-me-grid">
+          <div class="about-fact about-fact--blue"><h4>目前角色</h4><p>歐洲資料公司 Engineering Lead</p></div>
+          <div class="about-fact about-fact--red"><h4>工作重點</h4><p>資料工程、雲端架構、資料治理</p></div>
+          <div class="about-fact about-fact--yellow"><h4>教學工作</h4><p>緯育 TibaMe／資策會講師與課程顧問</p></div>
+          <div class="about-fact about-fact--green"><h4>專業認證</h4><p>Google Cloud 專業資料工程師與雲端架構師</p></div>
+          <div class="about-fact about-fact--blue"><h4>學歷</h4><p>國立中央大學數學系</p></div>
+          <div class="about-fact about-fact--red"><h4>資料工程年資</h4><p>約 7 年，橫跨新創與企業</p></div>
+        </div>
+      </article>
+      <article class="career-card">
+        <div class="career-card__heading"><h3>我的過往公司</h3><span class="career-card__tag">從資料工程到資料架構</span></div>
+        <ul class="career-bullets" aria-label="我的過往公司">
+          <li class="career-bullet career-bullet--current"><div><h4>歐洲資料公司</h4><p>Engineering Lead｜資料工程、雲端架構</p></div></li>
+          <li class="career-bullet career-bullet--blue"><div><h4>ViewSonic</h4><p>資料湖倉、資料治理</p></div></li>
+          <li class="career-bullet career-bullet--red"><div><h4>Hengstyle</h4><p>資料模型、資料架構</p></div></li>
+          <li class="career-bullet career-bullet--yellow"><div><h4>Gamania</h4><p>分散式 ETL、Spark</p></div></li>
+          <li class="career-bullet career-bullet--green"><div><h4>LnData</h4><p>Hadoop 大數據解決方案</p></div></li>
+          <li class="career-bullet career-bullet--blue"><div><h4>Taipei Fubon Bank</h4><p>資料管線監控</p></div></li>
+          <li class="career-bullet career-bullet--red"><div><h4>數學系</h4><p>國立中央大學</p></div></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 5 分鐘。</strong>先讓大家知道我現在的角色、工作焦點、教學背景與學經歷，再用右側路徑補充這些能力怎麼一路累積。</p>
+    <p>職涯路徑不要講成升職階梯，而是問題範圍逐步變大：從問題拆解、資料處理、資料流程與上線交付，走到平台架構與技術決策。</p>
+  </div>
+</section>
+
+<section class="slide" id="intro-lessons" role="group" aria-label="自我介紹：從資料工程走到架構設計">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">01</span> 自我介紹 · CAREER PATH</p>
+    <h2>從資料工程出發，<br>一路走到架構設計</h2>
+    <p class="lede">我不是一開始就知道要做資料工程，是在大數據、後端和大量資料處理的工作裡，慢慢找到方向。</p>
+    <div class="career-timeline" aria-label="從數學系走到架構設計的五個職涯節點">
+      <svg class="career-timeline__svg" viewBox="0 0 1152 292" role="img" aria-label="五個職涯節點的魚骨式時間軸">
+        <defs>
+          <marker id="career-timeline-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8" fill="none" stroke="#4285f4" stroke-width="1.5"></path>
+          </marker>
+        </defs>
+        <line class="career-timeline__spine" x1="44" y1="136" x2="1084" y2="136" marker-end="url(#career-timeline-arrow)"></line>
+        <line class="career-timeline__branch" x1="115.2" y1="136" x2="138" y2="102"></line>
+        <line class="career-timeline__branch" x1="345.6" y1="136" x2="322" y2="164"></line>
+        <line class="career-timeline__branch" x1="576" y1="136" x2="553" y2="102"></line>
+        <line class="career-timeline__branch" x1="806.4" y1="136" x2="830" y2="164"></line>
+        <line class="career-timeline__branch" x1="1036.8" y1="136" x2="1060" y2="102"></line>
+        <g class="career-timeline__node"><circle cx="115.2" cy="136" r="16"></circle><text x="115.2" y="140">01</text></g>
+        <g class="career-timeline__node"><circle cx="345.6" cy="136" r="16"></circle><text x="345.6" y="140">02</text></g>
+        <g class="career-timeline__node"><circle cx="576" cy="136" r="16"></circle><text x="576" y="140">03</text></g>
+        <g class="career-timeline__node"><circle cx="806.4" cy="136" r="16"></circle><text x="806.4" y="140">04</text></g>
+        <g class="career-timeline__node career-timeline__node--current"><circle cx="1036.8" cy="136" r="16"></circle><text x="1036.8" y="140">05</text></g>
+      </svg>
+      <article class="career-timeline__stage career-timeline__stage--one">
+        <span>01 / START</span><h3>數學系</h3><ul><li>分析工作不難找</li><li>不喜歡只能等待結果出來</li></ul>
+      </article>
+      <article class="career-timeline__stage career-timeline__stage--two career-timeline__stage--bottom">
+        <span>02 / BIG DATA</span><h3>大數據分析</h3><ul><li>當時銀行業正流行大數據</li><li>開始接觸資料處理與工程問題</li></ul>
+      </article>
+      <article class="career-timeline__stage career-timeline__stage--three">
+        <span>03 / BACKEND</span><h3>新創後端工程</h3><ul><li>進入資料導向的新創團隊</li><li>以後端開發為主，接觸大數據運算框架</li></ul>
+      </article>
+      <article class="career-timeline__stage career-timeline__stage--four career-timeline__stage--bottom">
+        <span>04 / SCALE</span><h3>大規模資料處理</h3><ul><li>正式以資料工程師身分工作</li><li>開始處理龐大的資料量</li></ul>
+      </article>
+      <article class="career-timeline__stage career-timeline__stage--five career-timeline__stage--current">
+        <span>05 / ARCHITECT</span><h3>Data Architect</h3><ul><li>從資料處理延伸到資料治理</li><li>進一步參與資料定義與架構設計</li></ul>
+      </article>
+    </div>
+    <div class="quote">我找到自己喜歡的工作，是讓大量資料在短時間內<strong>可靠地流過系統</strong>。</div>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 6 分鐘。</strong>這一頁講的是我怎麼從資料工程走到現在的架構工作，不是把履歷逐段念過去。</p>
+    <p>可以先說：因為數學系背景，我其實很容易找到分析師的工作，但我不喜歡那種需要等待資料整理與結果出現的工作型態。那時我也還不知道資料工程師這個職位，只知道「大數據」很熱門，所以先進入大數據或後端相關職務。</p>
+    <p>在資料導向的新創公司裡，我雖然掛的是後端工程師，但主要接觸大數據運算框架。那是我開始喜歡資料工程的時候：看著資料流過系統，並且把非常大量的資料在短時間內處理好，會帶來很直接的成就感。後來進入更大規模的資料工程場景，才真正以資料工程師的角色處理更大量的資料。</p>
+    <p>再往後，我開始更在意資料治理、資料定義與資料如何被長期使用，所以逐漸往 high-level 的架構設計走到現在。</p>
+  </div>
+</section>
+
+<section class="slide" id="intro-teaching" role="group" aria-label="自我介紹：為什麼也做教學">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">01</span> 自我介紹 · WHY SHARE</p>
+    <h2>我也持續做教學，<br>做得出來還要讓別人接得住</h2>
+    <div class="split split--wide teaching-identity">
+      <div class="stack">
+        <p class="lede">除了專案與架構工作，我也持續做企業培訓、課程設計與 Workshop。對我來說，教學不是把工具名稱列一遍，而是把一個實際問題拆到別人能跟著做。</p>
+        <div class="teaching-role">
+          <span class="mono">講師身份</span>
+          <strong>緯育 TibaMe／資策會講師與課程顧問</strong>
+        </div>
+        <div class="teaching-topics">
+          <span class="mono">我主要教</span>
+          <div class="teaching-topic-row teaching-topic-row--high">
+            <p>資料工程、資料治理、雲端架構</p>
+          </div>
+          <div class="teaching-topic-row teaching-topic-row--tools">
+            <p>Python、Flask、Docker、GCP、dbt</p>
+          </div>
+        </div>
+      </div>
+      <div class="note-box teaching-method">
+        <h3>我希望學員帶走的，不只是範例</h3>
+        <ol class="teaching-method-list">
+          <li><strong>做出來</strong><span>先完成一個能跑的版本</span></li>
+          <li><strong>看得懂</strong><span>知道資料怎麼流、每個選擇在解什麼問題</span></li>
+          <li><strong>接得住</strong><span>遇到錯誤，知道怎麼找原因、繼續修改</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="teaching-takeaway">
+      <span class="teaching-takeaway__lead">這也反過來影響我的工程工作</span>
+      <p>寫出來的系統，不只要能跑，也要讓下一個人看得懂、改得動。</p>
+    </div>
+    <p class="kicker"><strong>做得出來，是起點；讓別人接得住，才算真的教會。</strong></p>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 3 分鐘，也是第一段的收尾。</strong>先交代我除了做專案與架構，也有緯育 TibaMe／資策會講師與課程顧問的身份，持續參與企業培訓、課程設計與 Workshop。</p>
+    <p>可以補充：我主要教資料工程、資料治理、雲端架構，也會帶 Python、Flask、Docker、GCP、dbt 等實作。課程裡會讓學員從一個可以執行的範例開始，再把資料流、系統選擇與錯誤排查拆開。能完成範例只是第一步；之後遇到新問題，知道怎麼找原因、怎麼繼續改，才是我希望留下的能力。</p>
+    <p>這種要求也會反過來影響我的工程工作：系統不能只在我手上能跑，還要讓下一個人看得懂、改得動。接到下一段時可以說：「接下來我們先退一步，看看資料工作本身為什麼會需要這麼多不同角色。」</p>
+  </div>
+</section>
+
+<!-- SECTION: 02-value-chain -->
+<section class="slide slide--dark section-divider" id="value-divider" role="group" aria-label="資料價值產業鏈：章節開場">
+  <div class="pad"><p class="section-code">02 / VALUE CHAIN</p><h2>資料為什麼會變成一門工程？</h2><div class="divider-line"></div><p class="section-intro">一筆資料從事件產生，經過來源系統與資料平台，最後用來分析或支援決策。<br>中間任何一段出了問題，最後的結果就可能不值得相信。</p></div>
+  <div class="slide-notes" hidden><p>這一段先建立共同底圖。資料職位變重要，是因為企業開始把資料當成持續運作的基礎設施，也需要有人把一次性的整理工作變成穩定流程。</p></div>
+</section>
+
+<section class="slide" id="value-chain-map" role="group" aria-label="資料價值產業鏈：事件如何走到行動">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">02</span> 資料價值產業鏈</p>
+    <h2>一張 dashboard，<br>背後有一整條資料路徑</h2>
+    <p class="lede">DA、DS、DE 都在同一條資料路徑上工作。畫面上的數字只是最後一站，前面每個環節都可能改變它。</p>
+    <div class="value-flow" aria-label="資料從事件走到決策的五個階段">
+      <div class="value-flow__rail" aria-hidden="true"></div>
+      <article class="value-flow__stage">
+        <span class="value-flow__node">01</span>
+        <div><span class="value-flow__tag">INPUT</span><h3>真實世界</h3><p>交易、點擊、設備、客服、業務流程</p></div>
+      </article>
+      <article class="value-flow__stage">
+        <span class="value-flow__node">02</span>
+        <div><span class="value-flow__tag">SOURCE</span><h3>來源系統</h3><p>DB、API、Log、第三方服務與人工輸入</p></div>
+      </article>
+      <article class="value-flow__stage">
+        <span class="value-flow__node">03</span>
+        <div><span class="value-flow__tag">PLATFORM</span><h3>資料平台</h3><p>擷取、轉換、儲存、建模、品質與治理</p></div>
+      </article>
+      <article class="value-flow__stage">
+        <span class="value-flow__node">04</span>
+        <div><span class="value-flow__tag">INSIGHT</span><h3>分析／模型</h3><p>指標、實驗、預測、分群與推論</p></div>
+      </article>
+      <article class="value-flow__stage">
+        <span class="value-flow__node">05</span>
+        <div><span class="value-flow__tag">ACTION</span><h3>決策與行動</h3><p>產品、營運、行銷、風控與管理</p></div>
+      </article>
+    </div>
+    <div class="value-flow__outcomes">
+      <div class="value-flow__outcome value-flow__outcome--blue"><h3>資料工程的價值</h3><p>讓資料按預期出現；出錯時有人知道、找得到，也修得回來。</p></div>
+      <div class="value-flow__outcome value-flow__outcome--green"><h3>分析的價值</h3><p>把資料整理成能回答問題的指標、比較和證據；圖表只是最後的呈現方式。</p></div>
+      <div class="value-flow__outcome value-flow__outcome--yellow"><h3>公司真正需要的能力</h3><p>把資料做得更快、更穩，讓人敢拿來做決策；平台長什麼樣只是其中一小部分。</p></div>
+    </div>
+  </div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 5 分鐘。</strong>先帶大家從左到右看完整條資料路徑：一個 dashboard 上的數字，不是從畫面上突然出現，而是從真實世界的事件開始，經過來源系統、資料平台，最後才進到分析與決策。</p><p>再補充各段工作的差異：資料工程在中間承擔的是把來源的混亂整理成下游可依賴的介面；分析與模型則把資料整理成能回答問題的指標、比較和證據。這兩種工作不是分開的兩條路，而是在同一條路徑上接力。</p><p>最後收在下方三個價值：公司真正需要的不是某一個特定平台，而是把資料做得更快、更穩，讓人敢拿來做決策。可以問大家：如果你看見一個 dashboard，會想往左追問哪一段？</p>
+  </div>
+</section>
+
+<section class="slide" id="value-why-now" role="group" aria-label="資料職位為什麼近年爆紅">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">02</span> 為什麼是現在？</p>
+    <h2>資料職位為什麼在這幾年變多？</h2>
+    <p class="thesis">資料一旦進入營運，錯一次就不只是報表錯；庫存、行銷、風控與客戶服務都可能跟著錯。</p>
+    <div class="pain-grid">
+      <article class="pain-card pain-card--blue">
+        <span class="pain-card__no">01 / DAILY</span>
+        <h3>資料變成每天都要跑的系統</h3>
+        <p>流程不是跑完一次就結束。半夜斷掉、隔天才發現，報表、推薦或營運數字就會一起延遲。</p>
+      </article>
+      <article class="pain-card pain-card--red">
+        <span class="pain-card__no">02 / DEFINITION</span>
+        <h3>同一個數字，常常有不同答案</h3>
+        <p>不同團隊各自計算營收或活躍用戶，大家都能交報表，卻沒有人能說明哪個才是基準。</p>
+      </article>
+      <article class="pain-card pain-card--yellow">
+        <span class="pain-card__no">03 / SCALE</span>
+        <h3>資料量變大，錯誤也變得更貴</h3>
+        <p>查詢變慢、回補變久、雲端費用上升。問題不再只是能不能算，而是能不能穩定地算下去。</p>
+      </article>
+      <article class="pain-card pain-card--green">
+        <span class="pain-card__no">04 / AI</span>
+        <h3>AI 越快，越快暴露資料問題</h3>
+        <p>模型可以很快給答案，但來源過期、欄位定義不一致，回答再順也可能是錯的。</p>
+      </article>
+    </div>
+    <p class="kicker"><strong>資料職位變多，是因為資料已經從分析素材，變成會影響營運的系統。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>這頁不是要說「資料變多，所以需要資料工程師」這麼簡單。真正的變化是：資料開始進入每天的營運流程，一次錯誤會沿著下游傳出去。</p><p>可以依序講四個痛點：流程需要每天穩定跑；不同部門對同一個指標有不同定義；資料量放大後，速度、回補與成本都變成工程問題；AI 讓答案產生得更快，也讓錯誤定義與過期資料更快被放大。</p><p>收尾時強調：資料職位增加，不是因為工具名稱變多，而是資料已經會影響庫存、行銷、風控與客戶服務。</p></div>
+</section>
+
+<section class="slide" id="value-not-easy" role="group" aria-label="資料職位的真實挑戰">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">02</span> 近況的另一面</p>
+    <h2>AI 讓效率變高了，<br>大家也期待你做更多</h2>
+    <p class="lede">資料錯了、管線斷了、帳單爆了，還是有人要處理。</p>
+    <div class="tool-gap tool-gap--grid" aria-label="工具加速的部分與工程師仍要承擔的責任">
+      <article class="tool-gap__card">
+        <div class="tool-gap__card-title"><span>01</span><strong>資料接得更快</strong></div>
+        <p class="tool-gap__shortcut">Connector、API 與雲端服務，讓第一版很快出現。</p>
+        <div class="tool-gap__turn">→</div>
+        <div class="tool-gap__responsibility"><span>留下的問題</span><strong>Schema 一改，下游可能沒人知道。</strong></div>
+      </article>
+      <article class="tool-gap__card">
+        <div class="tool-gap__card-title"><span>02</span><strong>AI 幫你寫 SQL／程式</strong></div>
+        <p class="tool-gap__shortcut">語法可以很快生成，答案也看起來很像真的。</p>
+        <div class="tool-gap__turn">→</div>
+        <div class="tool-gap__responsibility"><span>留下的問題</span><strong>語法正確，指標仍可能算錯。</strong></div>
+      </article>
+      <article class="tool-gap__card">
+        <div class="tool-gap__card-title"><span>03</span><strong>雲端服務快速上線</strong></div>
+        <p class="tool-gap__shortcut">儲存、運算與資料庫都能快速建立。</p>
+        <div class="tool-gap__turn">→</div>
+        <div class="tool-gap__responsibility"><span>留下的問題</span><strong>效能、權限與成本要有人盯。</strong></div>
+      </article>
+      <article class="tool-gap__card">
+        <div class="tool-gap__card-title"><span>04</span><strong>Pipeline 自動排程</strong></div>
+        <p class="tool-gap__shortcut">成功路徑被自動化，日常操作少很多。</p>
+        <div class="tool-gap__turn">→</div>
+        <div class="tool-gap__responsibility"><span>留下的問題</span><strong>失敗之後，回補與重跑要走得通。</strong></div>
+      </article>
+    </div>
+    <p class="kicker kicker--blue"><strong>AI 讓產出變快、變多；光靠人力逐一 review 已經不夠，還要把測試、驗證與監控接進流程。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 4 分鐘。</strong>AI 讓產出速度提高，大家也會自然期待同一個人交付更多內容。資料工程師面對的不是單純工時增加，而是來源改欄位、指標定義不一致、SQL 算錯、雲端成本上升，以及管線失敗後如何回補。</p><p>可以強調：當 AI 產出的程式、SQL 與文件變快也變多，光靠人力逐一 review 會很快變成瓶頸。測試、驗證、監控與可追溯紀錄，必須一起接進流程，不能只靠最後一關人工檢查。</p></div>
+</section>
+
+<!-- SECTION: 03-roles -->
+<section class="slide slide--dark section-divider" id="roles-divider" role="group" aria-label="DA DS DE：章節開場">
+  <div class="pad"><p class="section-code">03 / ROLE MAP</p><h2>DA、DS、DE，處理不同的資料問題</h2><div class="divider-line"></div><p class="section-intro">DA 把資料轉成洞察，DS 建立預測與模型，DE 確保資料穩定流動。</p></div>
+  <div class="slide-notes" hidden><p>這一段用問題與產出去講三個角色。不同公司會重疊，尤其小團隊一個人可能同時做兩三種事。</p></div>
+</section>
+
+<section class="slide" id="roles-map" role="group" aria-label="DA DS DE：責任地圖">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">03</span> 初步認識 DA／DS／DE</p>
+    <h2>三種角色，起手式不一樣</h2>
+    <div class="roles-map-layout">
+      <div class="roles-map__left">
+        <p class="lede">同一份資料可以被三種角色使用，差別在於每個角色先處理的問題不同。</p>
+        <div class="role-cards">
+          <article class="role-card role-card--da">
+            <div class="role-card__role">DA<span>Data Analyst</span></div>
+            <div><h3>先問：到底發生了什麼？</h3><p>定義指標、找出趨勢與例外，幫團隊看懂現況。</p></div>
+          </article>
+          <article class="role-card role-card--ds">
+            <div class="role-card__role">DS<span>Data Scientist</span></div>
+            <div><h3>先問：什麼可能發生？</h3><p>建立假設、訓練模型，驗證預測能不能用。</p></div>
+          </article>
+          <article class="role-card role-card--de">
+            <div class="role-card__role">DE<span>Data Engineer</span></div>
+            <div><h3>先問：資料能不能可靠到達？</h3><p>設計 pipeline、品質檢查與恢復機制，讓資料持續可用。</p></div>
+          </article>
+        </div>
+      </div>
+      <div class="role-venn">
+        <div class="venn-diagram" aria-label="DA、DS、DE 三種職能的交集圖">
+          <span class="venn-circle venn-circle--da" aria-hidden="true"></span>
+          <span class="venn-circle venn-circle--ds" aria-hidden="true"></span>
+          <span class="venn-circle venn-circle--de" aria-hidden="true"></span>
+          <span class="venn-label venn-label--da"><strong>DA</strong><small>看懂現況</small></span>
+          <span class="venn-label venn-label--ds"><strong>DS</strong><small>預測未來</small></span>
+          <span class="venn-label venn-label--de"><strong>DE</strong><small>穩定供應</small></span>
+          <span class="venn-region venn-region--top">定義問題</span>
+          <span class="venn-region venn-region--left">資料可用</span>
+          <span class="venn-region venn-region--right">模型能上線</span>
+          <span class="venn-region venn-region--center">可被信任</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>先講左側三張卡片：DA 先理解現況，DS 先處理預測與模型，DE 先確保資料可靠到達。再看右側三圓圖，說明三種職能不是互斥的，實際工作會在定義問題、資料可用、模型上線等地方交集。</p><p>中央的「可被信任」不是另一個職稱，而是三者一起把資料、模型與決策做成能使用的結果。工具清單先放旁邊；SQL、Python、BI、模型、Pipeline 都是手段。不同公司會重疊，尤其小團隊一個人可能同時做兩三種事。</p></div>
+</section>
+
+<section class="slide" id="roles-boundary" role="group" aria-label="DA DS DE：如何判斷適合哪個角色">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">03</span> 不把人貼標籤</p>
+    <h2>不要先問自己是哪一型<br>先看你願意長期接住哪種問題</h2>
+    <p class="boundary-lede">角色不是性格分類，而是你願意反覆處理、持續累積，並對結果負責的工作。</p>
+    <div class="boundary-grid">
+      <article class="boundary-card boundary-card--da">
+        <div class="boundary-card__head"><span class="boundary-code">DA<small>問題定義</small></span><h3>把模糊問題定義清楚</h3></div>
+        <span class="boundary-label">長期接住</span>
+        <p class="boundary-problem">需求混亂、指標不一致，團隊不知道到底要解決什麼。</p>
+        <span class="boundary-label">工作鏈</span>
+        <div class="boundary-flow" aria-label="DA 工作鏈"><span>模糊需求</span><span>判準</span><span>決策</span></div>
+        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">問題定義、決策準則</p></div>
+        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">把模糊變清楚，也要面對別人不同意你的取捨。</p></div>
+      </article>
+      <article class="boundary-card boundary-card--ds">
+        <div class="boundary-card__head"><span class="boundary-code">DS<small>證據建立</small></span><h3>在不確定中建立證據</h3></div>
+        <span class="boundary-label">長期接住</span>
+        <p class="boundary-problem">資訊不足、答案未明，團隊仍要判斷哪些方向值得投入。</p>
+        <span class="boundary-label">工作鏈</span>
+        <div class="boundary-flow" aria-label="DS 工作鏈"><span>假設</span><span>實驗</span><span>證據</span></div>
+        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">測試結果、方向修正</p></div>
+        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">在沒有標準答案時推進，也接受原本的想法可能被證偽。</p></div>
+      </article>
+      <article class="boundary-card boundary-card--de">
+        <div class="boundary-card__head"><span class="boundary-code">DE<small>系統交接</small></span><h3>讓系統可追溯、可重跑</h3></div>
+        <span class="boundary-label">長期接住</span>
+        <p class="boundary-problem">資料來源不清、流程容易失效，結果無法重現或交接。</p>
+        <span class="boundary-label">工作鏈</span>
+        <div class="boundary-flow" aria-label="DE 工作鏈"><span>資料流</span><span>錯誤追查</span><span>可交接</span></div>
+        <div class="boundary-section"><span class="boundary-label">留下</span><p class="boundary-output">檢查規則、重跑流程</p></div>
+        <div class="boundary-section boundary-section--responsibility"><span class="boundary-label">要承擔</span><p class="boundary-responsibility">讓成果不只依賴自己，也接住不易被看見、卻會影響整體的工作。</p></div>
+      </article>
+    </div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>不要把 DA、DS、DE 講成性格分類。逐欄比較四件事：長期接住的問題、反覆做的工作、留下的產出，以及必須承擔的責任。</p><p>DA 面對的是定義與取捨，DS 面對的是不確定與證據，DE 面對的是可靠性、追溯與交接。重點不是判斷自己像哪個角色，而是看自己願意長期接住哪種問題。</p></div>
+</section>
+
+<!-- SECTION: 04-collaboration -->
+<section class="slide slide--dark section-divider" id="work-divider" role="group" aria-label="資料工作實務：章節開場">
+  <div class="pad"><p class="section-code">04 / WORK IN PRACTICE</p><h2>從一起定義，到把資料交付給下游</h2><div class="divider-line"></div><p class="section-intro">角色合作和 DE 日常，其實是同一件事：把問題做成別人敢用、也接得起來的系統。</p></div>
+  <div class="slide-notes" hidden><p>這一段把原本的 Collaboration 和 DE Daily 合在一起。角色合作不是開會分工而已，最後要落在資料能不能被使用、被驗證、被維護。</p></div>
+</section>
+
+<section class="slide" id="work-collaboration" role="group" aria-label="資料工作實務：角色如何一起把問題做完">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">04</span> 共同問題</p>
+    <h2>會員可能流失時，<br>三個角色怎麼一起把問題做完</h2>
+    <p class="lede">先對齊問題，再決定要不要做模型；最後還要讓結果能持續更新、有人接手。</p>
+    <div class="collab-flow"><article class="collab-node"><span class="role">DA · 定義</span><h3>先把「流失」說清楚</h3><p>觀察期間、納入族群、例外與成功條件先定義，避免拿模糊標籤訓練模型。</p></article><div class="collab-arrow">→</div><article class="collab-node center"><span class="role">共同決策</span><h3>這個結果要用來做什麼？</h3><p>是發通知、給優惠、調整產品，還是只想理解現象？錯判成本與決策時點要先說清楚。</p></article><div class="collab-arrow">→</div><article class="collab-node"><span class="role">DS · DE</span><h3>驗證，然後持續供應</h3><p>DS 看證據與限制；DE 確認特徵資料能更新、重跑，訓練與上線拿到的資料一致。</p></article></div>
+    <div class="contract"><div class="contract-item"><h3>定義</h3><p>期間、族群、例外與成功條件。</p></div><div class="contract-item"><h3>驗證</h3><p>資料一致，結果附帶適用範圍與限制。</p></div><div class="contract-item"><h3>交付</h3><p>更新頻率、owner、失效與回補方式。</p></div></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>用會員流失案例把三種工作接起來。DA 的定義會影響 DS 的標籤，DS 的需求會影響 DE 的資料契約；業務的決策成本則會反過來決定要不要做模型。</p><p>三個底部詞是交付前的最低共識：先把問題定義清楚，再確認資料與結果的限制，最後留下更新頻率、owner、失效訊號與回補方式。合作不是把工作切開，而是讓下一個人不用重新猜前面發生了什麼。</p></div>
+</section>
+
+<section class="slide" id="work-de-daily" role="group" aria-label="資料工作實務：資料工程師日常與架構取捨">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">04</span> DE DAILY</p>
+    <h2>DE 的日常，<br>不是把 Pipeline 寫完就結束</h2>
+    <p class="lede">每個需求都要在即時性、可靠度、維運能力與成本之間做選擇。</p>
+    <div class="day-layout"><div class="day-spine"><div class="day-step"><h3>1. 問清楚來源與用途</h3><p>誰產生、誰使用、多久更新，成功的定義是什麼？</p></div><div class="day-step"><h3>2. 選批次、微批次或即時</h3><p>由決策時點與失敗成本推導，不先追工具熱度。</p></div><div class="day-step"><h3>3. 建立可重跑的流程</h3><p>轉換、重試、回補與版本控制都要能走得通。</p></div><div class="day-step"><h3>4. 讓錯誤先被看見</h3><p>品質、freshness、schema、告警與 owner 要連起來。</p></div><div class="day-step"><h3>5. 交付給下游，持續修</h3><p>文件、血緣與新需求都會回到這條工作迴圈。</p></div></div><div class="day-artifact"><article class="artifact"><span class="mono">INPUT</span><h3>資料契約</h3><p>欄位、型別、更新頻率、擁有者與變更規則。</p></article><article class="artifact"><span class="mono">PROCESS</span><h3>Pipeline</h3><p>能觀測、能重跑，也能處理延遲與部分失敗。</p></article><article class="artifact"><span class="mono">CONTROL</span><h3>品質與血緣</h3><p>知道哪個檢查失敗，也知道影響哪些下游。</p></article><article class="artifact"><span class="mono">HANDOFF</span><h3>文件與告警</h3><p>讓下一個人接手時，不必只靠口頭記憶。</p></article></div></div>
+    <p class="quote">即時不是預設答案；<strong>選的方案要對應需求，也要能長期維護。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>這頁把 DE 的日常和架構判斷放在一起。很多時間花在上游欄位變更、資料延遲、回補、告警與下游定義不一致，不只是寫 Pipeline。</p><p>Batch、Micro-batch、Streaming 都是選項，不是職稱或能力高低。即時需求要由業務決策時點、延遲損失、重放需求、團隊維運能力與成本推導。最後收在四個交付物：資料契約、能重跑的 Pipeline、品質與血緣、文件與告警。</p></div>
+</section>
+
+<!-- SECTION: 06-career-path -->
+<section class="slide slide--dark section-divider" id="career-divider" role="group" aria-label="我的職涯如何走到現在：章節開場">
+  <div class="pad"><p class="section-code">05 / CAREER PATH</p><h2>職涯往前走，<br>要負責的範圍也會變大</h2><div class="divider-line"></div><p class="section-intro">回頭看，我先學會把問題做深，後來才開始對流程、系統、團隊與決策負責。</p></div>
+  <div class="slide-notes" hidden><p>這一段要講心路，不要念完整履歷。每個階段回答兩件事：當時遇到的問題變了什麼？因此需要多學會哪種責任？</p></div>
+</section>
+
+<section class="slide" id="career-timeline" role="group" aria-label="我的職涯如何走到現在：五個階段">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">05</span> 我的路徑</p>
+    <h2>我的工作範圍<br>怎麼一步步變大</h2>
+    <p class="lede">這條路沒有固定模板。每換一個工作環境，我都多接一些上下游和交付責任。</p>
+    <div class="career"><article class="career-item"><span class="era">01 / FOUNDATION</span><h3>數學背景</h3><p>練習定義、假設、拆解與驗證，習慣先把模糊問題拆開。</p><p class="learn">面對抽象問題的耐心</p></article><article class="career-item"><span class="era">02 / ENTRY</span><h3>資料分析訓練</h3><p>開始看到資料清理、指標定義和業務問題常常對不起來。</p><p class="learn">先問問題，再選方法</p></article><article class="career-item"><span class="era">03 / SYSTEMS</span><h3>金融與軟體系統</h3><p>接觸資料路徑、批次、後端與分散式處理，也把穩定性當成工程責任。</p><p class="learn">讓系統能在限制下運作</p></article><article class="career-item"><span class="era">04 / DATA</span><h3>資料工程平台</h3><p>接觸 ETL、Spark、訊息系統與雲端資料平台，開始面對更大的資料量，也要把流程穩定交付出去。</p><p class="learn">讓流程可重跑、可觀測</p></article><article class="career-item"><span class="era">05 / LEAD</span><h3>架構與帶領</h3><p>現在常要和不同團隊比較方案、說清楚代價，先把系統邊界定好，讓之後還能改。</p><p class="learn">對選擇與結果負責</p></article></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>用階段的問題來講，不一定說年份。數學沒有直接把我送進 DE；它提供一些底層習慣，後面的能力是在工作與反覆交付中長出來的。</p></div>
+</section>
+
+<section class="slide" id="career-lessons" role="group" aria-label="我的職涯如何走到現在：三個轉折">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">05</span> 三個轉折</p>
+    <h2>工具會換，<br>最後還是要對結果負責</h2>
+    <div class="split split--equal"><div class="stack"><div class="note-box"><h3>轉折一：開始對資料負責</h3><p>當資料被很多報表、模型與決策依賴，問題會變成：「產出錯了誰會知道、怎麼修、會影響誰？」</p></div><div class="note-box"><h3>轉折二：開始看完整系統</h3><p>後端與分散式系統經驗讓我開始在意資料的生命週期：來源、處理、儲存、重跑、監控與下游介面。</p></div></div><div class="stack"><div class="note-box"><h3>轉折三：開始設計團隊怎麼工作</h3><p>當問題跨過多個團隊，修好一個點還不夠；還要有共同標準、架構原則、治理、文件，以及讓別人也能做決定的語言。</p></div><div class="note-box"><h3>現在的工作重心</h3><p>我仍然會自己寫程式、查問題，也會同時看程式能不能跑、方案能不能被團隊維護、企業能不能負擔，以及需求改變後能不能繼續調整。</p></div></div></div>
+    <p class="kicker"><strong>職涯往前走，就是從把一個問題做好，到能對整條流程和最後結果負責。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>這是職涯故事的核心。「升級」的感覺，來自負責的範圍一路擴大：流程、系統、團隊與決策都要看。</p></div>
+</section>
+
+<!-- SECTION: 07-cases -->
+<section class="slide slide--dark section-divider" id="cases-divider" role="group" aria-label="實際案例分享：章節開場">
+  <div class="pad"><p class="section-code">06 / CASE STUDIES</p><h2>從案例看，<br>技術選擇怎麼做出來</h2><div class="divider-line"></div><p class="section-intro">下面用幾個去識別化的工程案例，看不同角色先問什麼，也看每個方案要付出什麼代價。</p></div>
+  <div class="slide-notes" hidden><p>先說明案例邊界：客戶名稱、內部數字與敏感欄位都不放進來。這裡保留問題結構與技術取捨，讓大家看到工程思維如何落地。</p></div>
+</section>
+
+<section class="slide" id="case-ingestion" role="group" aria-label="案例一：DMZ 與資料平台之間的資料路徑">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例一 · INGESTION</p><h2>資料能進來，<br>還要確定進得對</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <p class="lede">資料要從來源區域進到分析平台。權限、重送和失敗處理都要管好，架構圖只是起點。</p>
+    <div class="architecture"><div class="arch-box"><span class="mono">SOURCE ZONE</span><h3>來源與限制</h3><p>來源系統、網路區隔、檔案或資料庫，更新方式與可用窗口不一定一致。</p></div><div class="arch-arrow">→</div><div class="arch-box hot"><span class="mono">INGESTION PATH</span><h3>標準化入口</h3><p>建立可重複使用的資料路徑、驗證、落地、重試與紀錄，不讓每個 crawler 自己發明流程。</p></div><div class="arch-arrow">→</div><div class="arch-box"><span class="mono">DATA PLATFORM</span><h3>下游可以接著用</h3><p>資料進入平台後，才能被後續 ETL、分析、治理與監控流程接住。</p></div></div>
+    <div class="case-bottom"><p><strong>DE 的問題：</strong>如何讓 ingestion path 能被監控、追蹤，也能隨來源增加而維持運作。</p><p><strong>DA／DS 會關心：</strong>資料何時可用、哪些資料遺漏，以及結果適用到哪裡。</p></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>可以用金融場景的高限制環境作為背景，但不必講公司或內部架構。重點是「標準化入口」：來源不同、限制不同，仍需要一致的落地、驗證、重試與紀錄。</p><p>這也是工程責任和資料責任的交集：DE 建路徑，DA／DS 必須知道這條路徑的延遲、範圍與限制。</p></div>
+</section>
+
+<section class="slide" id="case-compute" role="group" aria-label="案例二：MapReduce 與 Spark 的效能重構">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例二 · COMPUTE</p><h2>效能改善，<br>先找瓶頸再換工具</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <p class="lede">當既有 ETL 的處理時間開始影響交付，直覺可能是「換成比較新的框架」。先回答幾個問題：瓶頸在資料讀寫、計算、排程、序列化，還是資料本身的分布？</p>
+    <div class="case-grid"><div class="case-step"><span class="mono">01 / MEASURE</span><h3>先量測</h3><p>拆開總時間：讀取、shuffle、計算、寫出與等待，避免只看整體完成時間。</p></div><div class="case-step"><span class="mono">02 / MODEL</span><h3>理解資料與流程</h3><p>確認資料量、分區、join、重複計算與中間結果，找出最消耗資源的地方。</p></div><div class="case-step"><span class="mono">03 / REBUILD</span><h3>重新設計處理</h3><p>把 MapReduce 流程重構成較適合的分散式處理方式，並保留結果驗證與回退路徑。</p></div><div class="case-step"><span class="mono">04 / VERIFY</span><h3>確認速度之外的影響</h3><p>速度變快還不夠；還要比對資料正確性、失敗模式、維運成本與後續可擴充性。</p></div></div>
+    <div class="quote">每次效能優化，都要說清楚<strong>多花了什麼、換回什麼</strong>。</div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>履歷中有 MapReduce 到 Spark 的重構經驗，但公開分享時可以不先放改善百分比，除非確認可公開。把重點放在診斷順序：量測、理解資料、改造、驗證。</p><p>這個案例可以連到數學與系統思維：演算法、資料結構、分區與執行模型會直接影響效能，不能只靠換一個產品名稱。</p></div>
+</section>
+
+<section class="slide" id="case-pipeline" role="group" aria-label="案例三：把腳本整理成可維護的資料管線">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例三 · PIPELINE</p><h2>把腳本整理成<br>有人敢依賴的資料管線</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <div class="architecture"><div class="arch-box"><span class="mono">BEFORE</span><h3>分散的處理腳本</h3><p>每個來源各自處理，失敗靠人工發現，邏輯與執行紀錄散落在不同地方。</p></div><div class="arch-arrow">→</div><div class="arch-box hot"><span class="mono">REFACTOR</span><h3>流程與模型分層</h3><p>用 workflow 管理執行，用 transformation 管理資料邏輯，讓責任與變更更清楚。</p></div><div class="arch-arrow">→</div><div class="arch-box"><span class="mono">AFTER</span><h3>能監控的資料管線</h3><p>加入測試、依賴、freshness、部署與 lineage，讓下游知道資料是否可用。</p></div></div>
+    <div class="split split--equal"><div class="note-box"><h3>技術面</h3><p>Prefect／Airflow 類 workflow、dbt 類 transformation、Cloud Warehouse、Git 與 CI/CD 用來把流程、邏輯與版本變成可管理的物件。</p></div><div class="note-box"><h3>組織面</h3><p>改善通常也包括命名、文件、owner、review、告警與交接。缺少這些，換框架只會更快製造新的混亂。</p></div></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>這個案例很貼近 DE 日常。可以提到 Prefect、dbt、BigQuery 或 Redshift 等經驗，但工具本身無法代替解題；要處理的是執行、轉換、測試、部署與責任，並把它們整理成可理解的流程。</p></div>
+</section>
+
+<section class="slide" id="case-role-lens" role="group" aria-label="案例回看：不同職能的視角">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">06</span> 從案例回看職能</p>
+    <h2>同一個案例，<br>三個角色先看不同風險</h2>
+    <table class="role-table"><tbody><tr class="role-da"><th>DA<span>可信的定義</span></th><td>這份資料涵蓋誰？期間是否完整？指標定義有沒有因為回補、去重或延遲而改變？結論能不能支持一個具體決策？</td></tr><tr class="role-ds"><th>DS<span>可用的證據</span></th><td>訓練資料是否代表要預測的對象？特徵在使用時是否拿得到？模型或實驗的結果，和資料品質問題如何區分？</td></tr><tr class="role-de"><th>DE<span>穩定的資料供應</span></th><td>來源、流程、資料模型、品質、權限、成本與監控能否長期運作？出錯時能否知道影響範圍並恢復？</td></tr></tbody></table>
+    <p class="kicker"><strong>三個職能面對同一個結果，各自先處理不同風險。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>用它把案例收束回前面的角色地圖。可以讓聽眾選一列，說說看自己最想處理哪種問題；不要引導成某個角色比較高級。</p></div>
+</section>
+
+<!-- SECTION: 08-ai-era -->
+<section class="slide slide--dark section-divider" id="ai-divider" role="group" aria-label="AI 時代該怎麼準備：章節開場">
+  <div class="pad"><p class="section-code">07 / AI ERA</p><h2>AI 會改變工作內容，<br>結果仍要有人負責</h2><div class="divider-line"></div><p class="section-intro">程式與答案產生得更快之後，問題定義、驗證、系統脈絡與責任判斷會更常出現在日常工作裡。</p></div>
+  <div class="slide-notes" hidden><p>這一段別做成 AI 工具清單。重點是哪些能力會被放大、哪些責任不能外包給模型。</p></div>
+</section>
+
+<section class="slide" id="ai-changes" role="group" aria-label="AI 時代：被加速與被放大的工作">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">07</span> AI 會改變什麼？</p>
+    <h2>AI 讓產出變快，<br>錯誤也可能走得更遠</h2>
+    <div class="ai-layout"><div class="ai-column"><h3>被加速的部分</h3><ul class="ai-list"><li>把自然語言轉成 SQL、程式或文件初稿</li><li>探索資料、解釋錯誤、產生測試案例</li><li>比較常見架構與實作方式</li><li>讓一個人先做出原本要多人一起起手的初版</li></ul></div><div class="ai-column"><h3>因此更重要的部分</h3><ul class="ai-list"><li>判斷需求與資料是否真的對得上</li><li>驗證答案、理解邊界、找出模型沒看見的例外</li><li>知道權限、資安、成本與穩定性不能靠猜</li><li>為上線後的結果、失效與影響範圍負責</li></ul></div></div>
+    <p class="quote">AI 可以很快寫出答案；<strong>能不能上線</strong>，還是要由工程和業務一起判斷。</p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>承認 AI 會提高個人產出，避免用「AI 不會取代人」這種空泛句子帶過。產出速度提高後，驗證、脈絡與責任會更重要。</p></div>
+</section>
+
+<section class="slide" id="ai-prep" role="group" aria-label="AI 時代：需要準備的能力">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">07</span> 怎麼準備？</p>
+    <h2>寫程式之外，<br>也要學會審查 AI 寫的系統</h2>
+    <div class="prepare-steps"><article class="prepare-step"><span class="mono">01 / FOUNDATION</span><h3>把底層補起來</h3><p>SQL、Python、資料結構、網路、Linux、版本控制與基礎統計。基礎不夠，很難知道答案哪裡不對。</p></article><article class="prepare-step"><span class="mono">02 / CONTEXT</span><h3>學會看完整流程</h3><p>不能只看一段 query；還要追來源、轉換、儲存、權限、部署、監控與下游使用。</p></article><article class="prepare-step"><span class="mono">03 / EVIDENCE</span><h3>用測試與觀測驗證</h3><p>用資料測試、效能測試、錯誤情境與真實案例去驗證它。「看起來合理」還不夠。</p></article><article class="prepare-step"><span class="mono">04 / JUDGEMENT</span><h3>練習說清楚取捨</h3><p>為什麼這樣做？成本是什麼？什麼情況會失效？誰需要知道？這些問題比 prompt 技巧更耐用。</p></article></div>
+    <p class="kicker"><strong>AI 讓初版更快；真正拉開差距的是，你能不能把結果驗清楚，並對它負責。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>給學生具體路徑：底層、脈絡、證據、判斷。可以示範讓 AI 產生一段 SQL，但接著問資料定義、NULL、重複、時區與效能，讓大家看到審查比生成更關鍵。</p></div>
+</section>
+
+<section class="slide" id="ai-90days" role="group" aria-label="AI 時代：接下來九十天可以做什麼">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">07</span> 可執行的起點</p>
+    <h2>接下來 90 天，<br>做一個經得起追問的作品</h2>
+    <p class="lede">作品不需要先做成一個大而空的 AI 平台。從公開資料或你熟悉的問題開始，把每一步怎麼想、怎麼做、哪裡可能錯寫下來。</p>
+    <div class="split split--equal"><div class="note-box"><h3>作品至少要能回答</h3><ul><li>問題是什麼？誰會用結果？</li><li>資料從哪裡來？有什麼偏差與限制？</li><li>流程怎麼跑？失敗時怎麼知道？</li><li>為什麼選這個方法？替代方案是什麼？</li><li>如果結論錯了，影響會是什麼？</li></ul></div><div class="note-box"><h3>可以這樣安排</h3><ul><li><strong>前 30 天：</strong>完成一個小題目與資料探索。</li><li><strong>中間 30 天：</strong>把流程、測試、文件與可重跑性補起來。</li><li><strong>最後 30 天：</strong>請別人追問，修正假設並寫下限制。</li></ul><p style="margin-top:15px">這樣別人才看得到：你會用工具，也能把模糊問題變成可以檢查的結果。</p></div></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 4 分鐘。</strong>這張不給無限長的學習清單。作品的價值在於可被追問：來源、假設、流程、錯誤與取捨都留下來，面試時才有可以深入討論的證據。</p></div>
+</section>
+
+<!-- SECTION: 09-qa -->
+<section class="slide slide--dark" id="qa" role="group" aria-label="Q&A：問答">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">08</span> Q&amp;A</p>
+    <h2 class="qa-title">來聊你現在卡住的問題。</h2>
+    <p class="qa-sub">你可以問職涯轉換、DA／DS／DE 的差異、資料工程師日常、架構取捨、AI 時代怎麼準備，也可以直接追問剛才哪一頁沒講清楚。</p>
+    <div class="qa-topics"><div class="qa-topic"><b>01 / ROLE</b><p>我適合哪種資料工作？職缺名稱要怎麼讀？</p></div><div class="qa-topic"><b>02 / WORK</b><p>資料工程師每天到底在做什麼？需要哪些基礎？</p></div><div class="qa-topic"><b>03 / PATH</b><p>如果現在才開始，下一個小題目可以怎麼選？</p></div></div>
+    <footer class="qa-foot"><div><p class="name">施丞優　Allen Shi</p><p class="mono">Data Engineering · Data Architecture · Engineering Lead</p></div><p class="mono">Thank you · NTU DAC</p></footer>
+  </div>
+  <div class="slide-notes" hidden><p><strong>Q&amp;A 約 10 分鐘。</strong>如果現場安靜，可以主動開第一題：「大家目前最分不清楚的是哪兩個角色？」或請大家選一個最想知道的：角色、日常、職涯、案例、AI。</p><p>回答時維持今天的原則：以實際問題與責任來回答，也說清楚這是我的路徑，大家可以拿自己的情境來比較。</p></div>
+</section>
+</main>
+</div>
+
+<div class="chrome" id="chrome">
+  <div class="progress" id="progress" role="presentation"><span class="progress-bar" id="progressBar"></span></div>
+  <div class="chrome-row">
+    <p class="brand">數據職涯導覽 <span>· NTU DAC</span></p>
+    <div class="controls">
+      <button type="button" class="btn" id="btnNotes" aria-pressed="false" title="講者備註（N）">備註</button>
+      <button type="button" class="btn" id="btnHelp" aria-pressed="false" title="快捷鍵說明（?）">?</button>
+      <button type="button" class="btn btn--nav" id="btnPrev" title="上一張（←）"><span aria-hidden="true">←</span><span class="sr-only">上一張投影片</span></button>
+      <p class="counter" id="counter" aria-hidden="true"><span id="cur">1</span><span class="counter-sep">/</span><span id="total">0</span></p>
+      <button type="button" class="btn btn--nav" id="btnNext" title="下一張（→）"><span aria-hidden="true">→</span><span class="sr-only">下一張投影片</span></button>
+    </div>
+  </div>
+</div>
+
+<aside class="panel panel--notes" id="notes" hidden aria-labelledby="notesTitle">
+  <div class="panel-head"><h2 id="notesTitle">講者備註 <span class="panel-sub" id="notesFor"></span></h2><button type="button" class="btn btn--close" id="btnNotesClose"><span aria-hidden="true">✕</span><span class="sr-only">關閉講者備註</span></button></div>
+  <div class="panel-body" id="notesBody"></div>
+</aside>
+<div class="panel panel--help" id="help" hidden role="dialog" aria-modal="false" aria-labelledby="helpTitle">
+  <div class="panel-head"><h2 id="helpTitle">鍵盤快捷鍵</h2><button type="button" class="btn btn--close" id="btnHelpClose"><span aria-hidden="true">✕</span><span class="sr-only">關閉說明</span></button></div>
+  <div class="panel-body"><dl class="keys"><div><dt><kbd>→</kbd><kbd>空白</kbd><kbd>PgDn</kbd></dt><dd>下一張</dd></div><div><dt><kbd>←</kbd><kbd>PgUp</kbd></dt><dd>上一張</dd></div><div><dt><kbd>Home</kbd> / <kbd>End</kbd></dt><dd>第一張 / 最後一張</dd></div><div><dt><kbd>1</kbd>–<kbd>9</kbd><kbd>0</kbd></dt><dd>跳到前 10 張</dd></div><div><dt><kbd>N</kbd></dt><dd>講者備註</dd></div><div><dt><kbd>F</kbd></dt><dd>全螢幕</dd></div><div><dt><kbd>?</kbd></dt><dd>顯示／關閉說明</dd></div><div><dt><kbd>Esc</kbd></dt><dd>關閉面板</dd></div></dl><p class="keys-foot">觸控裝置可左右滑動切換；<kbd>⌘</kbd>／<kbd>Ctrl</kbd> + <kbd>P</kbd> 可列印或輸出 PDF。</p></div>
+</div>
+<p class="sr-only" id="live" role="status" aria-live="polite"></p>
+<script src="assets/deck.js"></script>
+</body>
+</html>

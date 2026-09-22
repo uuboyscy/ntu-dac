@@ -1,0 +1,43 @@
+<section class="slide slide--dark section-divider" id="cases-divider" role="group" aria-label="實際案例分享：章節開場">
+  <div class="pad"><p class="section-code">06 / CASE STUDIES</p><h2>從案例看，<br>技術選擇怎麼做出來</h2><div class="divider-line"></div><p class="section-intro">下面用幾個去識別化的工程案例，看不同角色先問什麼，也看每個方案要付出什麼代價。</p></div>
+  <div class="slide-notes" hidden><p>先說明案例邊界：客戶名稱、內部數字與敏感欄位都不放進來。這裡保留問題結構與技術取捨，讓大家看到工程思維如何落地。</p></div>
+</section>
+
+<section class="slide" id="case-ingestion" role="group" aria-label="案例一：DMZ 與資料平台之間的資料路徑">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例一 · INGESTION</p><h2>資料能進來，<br>還要確定進得對</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <p class="lede">資料要從來源區域進到分析平台。權限、重送和失敗處理都要管好，架構圖只是起點。</p>
+    <div class="architecture"><div class="arch-box"><span class="mono">SOURCE ZONE</span><h3>來源與限制</h3><p>來源系統、網路區隔、檔案或資料庫，更新方式與可用窗口不一定一致。</p></div><div class="arch-arrow">→</div><div class="arch-box hot"><span class="mono">INGESTION PATH</span><h3>標準化入口</h3><p>建立可重複使用的資料路徑、驗證、落地、重試與紀錄，不讓每個 crawler 自己發明流程。</p></div><div class="arch-arrow">→</div><div class="arch-box"><span class="mono">DATA PLATFORM</span><h3>下游可以接著用</h3><p>資料進入平台後，才能被後續 ETL、分析、治理與監控流程接住。</p></div></div>
+    <div class="case-bottom"><p><strong>DE 的問題：</strong>如何讓 ingestion path 能被監控、追蹤，也能隨來源增加而維持運作。</p><p><strong>DA／DS 會關心：</strong>資料何時可用、哪些資料遺漏，以及結果適用到哪裡。</p></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>可以用金融場景的高限制環境作為背景，但不必講公司或內部架構。重點是「標準化入口」：來源不同、限制不同，仍需要一致的落地、驗證、重試與紀錄。</p><p>這也是工程責任和資料責任的交集：DE 建路徑，DA／DS 必須知道這條路徑的延遲、範圍與限制。</p></div>
+</section>
+
+<section class="slide" id="case-compute" role="group" aria-label="案例二：MapReduce 與 Spark 的效能重構">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例二 · COMPUTE</p><h2>效能改善，<br>先找瓶頸再換工具</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <p class="lede">當既有 ETL 的處理時間開始影響交付，直覺可能是「換成比較新的框架」。先回答幾個問題：瓶頸在資料讀寫、計算、排程、序列化，還是資料本身的分布？</p>
+    <div class="case-grid"><div class="case-step"><span class="mono">01 / MEASURE</span><h3>先量測</h3><p>拆開總時間：讀取、shuffle、計算、寫出與等待，避免只看整體完成時間。</p></div><div class="case-step"><span class="mono">02 / MODEL</span><h3>理解資料與流程</h3><p>確認資料量、分區、join、重複計算與中間結果，找出最消耗資源的地方。</p></div><div class="case-step"><span class="mono">03 / REBUILD</span><h3>重新設計處理</h3><p>把 MapReduce 流程重構成較適合的分散式處理方式，並保留結果驗證與回退路徑。</p></div><div class="case-step"><span class="mono">04 / VERIFY</span><h3>確認速度之外的影響</h3><p>速度變快還不夠；還要比對資料正確性、失敗模式、維運成本與後續可擴充性。</p></div></div>
+    <div class="quote">每次效能優化，都要說清楚<strong>多花了什麼、換回什麼</strong>。</div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>履歷中有 MapReduce 到 Spark 的重構經驗，但公開分享時可以不先放改善百分比，除非確認可公開。把重點放在診斷順序：量測、理解資料、改造、驗證。</p><p>這個案例可以連到數學與系統思維：演算法、資料結構、分區與執行模型會直接影響效能，不能只靠換一個產品名稱。</p></div>
+</section>
+
+<section class="slide" id="case-pipeline" role="group" aria-label="案例三：把腳本整理成可維護的資料管線">
+  <div class="pad">
+    <div class="case-banner"><div><p class="eyebrow"><span class="num">06</span> 案例三 · PIPELINE</p><h2>把腳本整理成<br>有人敢依賴的資料管線</h2></div><p class="case-label">去識別化工程情境</p></div>
+    <div class="architecture"><div class="arch-box"><span class="mono">BEFORE</span><h3>分散的處理腳本</h3><p>每個來源各自處理，失敗靠人工發現，邏輯與執行紀錄散落在不同地方。</p></div><div class="arch-arrow">→</div><div class="arch-box hot"><span class="mono">REFACTOR</span><h3>流程與模型分層</h3><p>用 workflow 管理執行，用 transformation 管理資料邏輯，讓責任與變更更清楚。</p></div><div class="arch-arrow">→</div><div class="arch-box"><span class="mono">AFTER</span><h3>能監控的資料管線</h3><p>加入測試、依賴、freshness、部署與 lineage，讓下游知道資料是否可用。</p></div></div>
+    <div class="split split--equal"><div class="note-box"><h3>技術面</h3><p>Prefect／Airflow 類 workflow、dbt 類 transformation、Cloud Warehouse、Git 與 CI/CD 用來把流程、邏輯與版本變成可管理的物件。</p></div><div class="note-box"><h3>組織面</h3><p>改善通常也包括命名、文件、owner、review、告警與交接。缺少這些，換框架只會更快製造新的混亂。</p></div></div>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 6 分鐘。</strong>這個案例很貼近 DE 日常。可以提到 Prefect、dbt、BigQuery 或 Redshift 等經驗，但工具本身無法代替解題；要處理的是執行、轉換、測試、部署與責任，並把它們整理成可理解的流程。</p></div>
+</section>
+
+<section class="slide" id="case-role-lens" role="group" aria-label="案例回看：不同職能的視角">
+  <div class="pad">
+    <p class="eyebrow"><span class="num">06</span> 從案例回看職能</p>
+    <h2>同一個案例，<br>三個角色先看不同風險</h2>
+    <table class="role-table"><tbody><tr class="role-da"><th>DA<span>可信的定義</span></th><td>這份資料涵蓋誰？期間是否完整？指標定義有沒有因為回補、去重或延遲而改變？結論能不能支持一個具體決策？</td></tr><tr class="role-ds"><th>DS<span>可用的證據</span></th><td>訓練資料是否代表要預測的對象？特徵在使用時是否拿得到？模型或實驗的結果，和資料品質問題如何區分？</td></tr><tr class="role-de"><th>DE<span>穩定的資料供應</span></th><td>來源、流程、資料模型、品質、權限、成本與監控能否長期運作？出錯時能否知道影響範圍並恢復？</td></tr></tbody></table>
+    <p class="kicker"><strong>三個職能面對同一個結果，各自先處理不同風險。</strong></p>
+  </div>
+  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>用它把案例收束回前面的角色地圖。可以讓聽眾選一列，說說看自己最想處理哪種問題；不要引導成某個角色比較高級。</p></div>
+</section>
