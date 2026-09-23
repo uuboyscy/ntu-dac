@@ -89,7 +89,7 @@
     el.prev.disabled = index === 0;
     el.next.disabled = index === total - 1;
 
-    if (!el.notesPanel.hidden) renderNotes();
+    if (el.notesPanel && !el.notesPanel.hidden) renderNotes();
 
     el.live.textContent = '第 ' + (index + 1) + ' 張，共 ' + total + ' 張';
   }
@@ -118,6 +118,7 @@
   /* ——————————————————————————————— 講者備註 ————————————————— */
 
   function renderNotes() {
+    if (!el.notesPanel || !el.notesBody || !el.notesFor) return;
     var src = slides[index].querySelector('.slide-notes');
     el.notesFor.textContent = (index + 1) + ' / ' + total;
     if (src && src.innerHTML.trim()) {
@@ -128,6 +129,7 @@
   }
 
   function toggleNotes(force) {
+    if (!el.notesPanel || !el.notesBtn) return;
     var show = typeof force === 'boolean' ? force : el.notesPanel.hidden;
     el.notesPanel.hidden = !show;
     el.notesBtn.setAttribute('aria-pressed', show ? 'true' : 'false');
@@ -158,8 +160,8 @@
 
   el.next.addEventListener('click', nextSlide);
   el.prev.addEventListener('click', prevSlide);
-  el.notesBtn.addEventListener('click', function () { toggleNotes(); });
-  el.notesClose.addEventListener('click', function () { toggleNotes(false); el.notesBtn.focus(); });
+  if (el.notesBtn) el.notesBtn.addEventListener('click', function () { toggleNotes(); });
+  if (el.notesClose) el.notesClose.addEventListener('click', function () { toggleNotes(false); if (el.notesBtn) el.notesBtn.focus(); });
   el.helpBtn.addEventListener('click', function () { toggleHelp(); });
   el.helpClose.addEventListener('click', function () { toggleHelp(false); el.helpBtn.focus(); });
 
@@ -192,11 +194,12 @@
         e.preventDefault(); go(total - 1); break;
       case 'Escape':
         if (!el.helpPanel.hidden) { e.preventDefault(); toggleHelp(false); }
-        else if (!el.notesPanel.hidden) { e.preventDefault(); toggleNotes(false); }
+        else if (el.notesPanel && !el.notesPanel.hidden) { e.preventDefault(); toggleNotes(false); }
         break;
       case 'n':
       case 'N':
-        e.preventDefault(); toggleNotes(); break;
+        if (el.notesBtn) { e.preventDefault(); toggleNotes(); }
+        break;
       case 'f':
       case 'F':
         e.preventDefault(); toggleFullscreen(); break;

@@ -54,7 +54,7 @@ sections/
 python3 scripts/build_deck.py
 ```
 
-`index.html` 是組裝後的可播放版本；`index.template.html` 是外層 shell。平常內容編輯優先修改 `sections/*.html`，不要直接改組裝後的 `index.html`。
+`index.html` 是分享用、移除講者備註的版本；`index_note.html` 保留講者備註，供講者查看。兩者都由 `python3 scripts/build_deck.py` 產生；`index.template.html` 是外層 shell。平常內容編輯優先修改 `sections/*.html`，不要直接改組裝後的 HTML。
 
 ## 統一視覺系統
 
