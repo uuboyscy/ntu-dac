@@ -463,19 +463,33 @@
 
     <div class="compute-bottom">
       <div class="compute-evidence">
-        <div class="compute-evidence-head"><span class="mono">PROCESSING TIME / ORIGINAL SLIDE</span><span>三階段時間對照</span></div>
-        <div class="compute-timing-table" role="table" aria-label="產品 A 與產品 B 三種處理方式時間比較">
-          <div class="compute-timing-table__head" role="row"><span role="columnheader">產品</span><span role="columnheader">MapReduce</span><span role="columnheader">Spark</span><span role="columnheader">JobQueueSys</span></div>
-          <div class="compute-timing-table__row" role="row"><strong class="timing-target" role="rowheader">產品 A</strong><span role="cell">5 hr</span><span role="cell">3.5 hr</span><strong role="cell">1 hr</strong></div>
-          <div class="compute-timing-table__row" role="row"><strong class="timing-target" role="rowheader">產品 B</strong><span role="cell">6.5 hr</span><span role="cell">4.5 hr</span><strong role="cell">2.5 hr</strong></div>
+        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span><span>演進前後概估</span></div>
+        <div class="compute-duration-flow" aria-label="每日資料管線處理時間，從 MapReduce 經 Spark 演進至 JobQueueSys">
+          <div class="compute-duration-stage compute-duration-stage--before">
+            <span class="mono">原流程</span>
+            <strong>MapReduce</strong>
+            <b>約 7–8 小時</b>
+          </div>
+          <span class="compute-duration-arrow" aria-hidden="true">→</span>
+          <div class="compute-duration-stage compute-duration-stage--middle">
+            <span class="mono">引擎轉換</span>
+            <strong>Spark</strong>
+            <b>改用 Spark 處理</b>
+          </div>
+          <span class="compute-duration-arrow" aria-hidden="true">→</span>
+          <div class="compute-duration-stage compute-duration-stage--after">
+            <span class="mono">後續系統</span>
+            <strong>JobQueueSys</strong>
+            <b>約 1–2 小時</b>
+          </div>
         </div>
-        <p class="compute-footnote">原始投影片列出的方向性數據；資料量、硬體、是否含排隊時間與計算口徑待確認，不歸因於單一元件。</p>
+        <p class="compute-footnote">依當時整體流程的概略估計；不同作業與測量範圍可能不同，改善來自逐步演進，不單獨歸因於 Queue。</p>
       </div>
       <div class="compute-decision">
         <span class="mono">WHAT CHANGED</span>
         <ul class="compute-changes">
-          <li>用 Job ID 查詢任務狀態與輸出位置</li>
-          <li>失敗或訊息重送時，核對狀態與結果，避免重複寫入</li>
+          <li>每日資料管線執行時間縮短數倍，約 7–8 小時降至 1–2 小時</li>
+          <li>每個任務都有 Job ID，可追蹤 ready／running／done／error 狀態</li>
         </ul>
       </div>
     </div>

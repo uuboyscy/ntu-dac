@@ -1003,6 +1003,17 @@ strong { font-weight: 700; color: var(--google-text); }
 #case-compute .compute-evidence-head { margin-bottom: 6px; }
 #case-compute .compute-evidence-head .mono { font: 700 11px var(--mono); }
 #case-compute .compute-evidence-head > span:last-child { font-size: 11.5px; }
+#case-compute .compute-duration-flow { display: grid; grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(0, 1fr); gap: 7px; align-items: stretch; margin: 9px 0 7px; }
+#case-compute .compute-duration-stage { display: flex; min-width: 0; min-height: 66px; flex-direction: column; justify-content: center; gap: 3px; padding: 8px 10px; border-left: 3px solid var(--google-blue); border-radius: 7px; background: var(--google-bg); }
+#case-compute .compute-duration-stage--before { border-left-color: var(--google-red); }
+#case-compute .compute-duration-stage--middle { border-left-color: #fbbc04; }
+#case-compute .compute-duration-stage--after { border-left-color: var(--google-green); background: var(--google-green-wash); }
+#case-compute .compute-duration-stage .mono { color: var(--google-subtle); font-size: 10px; font-weight: 700; }
+#case-compute .compute-duration-stage strong { color: var(--google-text); font-size: 13px; line-height: 1.2; }
+#case-compute .compute-duration-stage b { color: var(--google-muted); font-size: 13px; line-height: 1.2; white-space: nowrap; }
+#case-compute .compute-duration-stage--before b { color: var(--google-red); }
+#case-compute .compute-duration-stage--after b { color: var(--google-green); }
+#case-compute .compute-duration-arrow { display: grid; place-items: center; color: var(--google-blue); font-size: 18px; font-weight: 700; }
 #case-compute .compute-timing-table__head, #case-compute .compute-timing-table__row { display: grid; grid-template-columns: 74px repeat(3, minmax(0, 1fr)); gap: 7px; align-items: center; }
 #case-compute .compute-timing-table__head { padding: 3px 0 5px; border-bottom: 1px solid var(--google-line); color: var(--google-subtle); font-size: 11px; font-weight: 700; }
 #case-compute .compute-timing-table__head span:not(:first-child), #case-compute .compute-timing-table__row > span { text-align: center; }

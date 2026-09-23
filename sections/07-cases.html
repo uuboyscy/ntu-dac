@@ -156,19 +156,33 @@
 
     <div class="compute-bottom">
       <div class="compute-evidence">
-        <div class="compute-evidence-head"><span class="mono">PROCESSING TIME / ORIGINAL SLIDE</span><span>三階段時間對照</span></div>
-        <div class="compute-timing-table" role="table" aria-label="產品 A 與產品 B 三種處理方式時間比較">
-          <div class="compute-timing-table__head" role="row"><span role="columnheader">產品</span><span role="columnheader">MapReduce</span><span role="columnheader">Spark</span><span role="columnheader">JobQueueSys</span></div>
-          <div class="compute-timing-table__row" role="row"><strong class="timing-target" role="rowheader">產品 A</strong><span role="cell">5 hr</span><span role="cell">3.5 hr</span><strong role="cell">1 hr</strong></div>
-          <div class="compute-timing-table__row" role="row"><strong class="timing-target" role="rowheader">產品 B</strong><span role="cell">6.5 hr</span><span role="cell">4.5 hr</span><strong role="cell">2.5 hr</strong></div>
+        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span><span>演進前後概估</span></div>
+        <div class="compute-duration-flow" aria-label="每日資料管線處理時間，從 MapReduce 經 Spark 演進至 JobQueueSys">
+          <div class="compute-duration-stage compute-duration-stage--before">
+            <span class="mono">原流程</span>
+            <strong>MapReduce</strong>
+            <b>約 7–8 小時</b>
+          </div>
+          <span class="compute-duration-arrow" aria-hidden="true">→</span>
+          <div class="compute-duration-stage compute-duration-stage--middle">
+            <span class="mono">引擎轉換</span>
+            <strong>Spark</strong>
+            <b>改用 Spark 處理</b>
+          </div>
+          <span class="compute-duration-arrow" aria-hidden="true">→</span>
+          <div class="compute-duration-stage compute-duration-stage--after">
+            <span class="mono">後續系統</span>
+            <strong>JobQueueSys</strong>
+            <b>約 1–2 小時</b>
+          </div>
         </div>
-        <p class="compute-footnote">原始投影片列出的方向性數據；資料量、硬體、是否含排隊時間與計算口徑待確認，不歸因於單一元件。</p>
+        <p class="compute-footnote">依當時整體流程的概略估計；不同作業與測量範圍可能不同，改善來自逐步演進，不單獨歸因於 Queue。</p>
       </div>
       <div class="compute-decision">
         <span class="mono">WHAT CHANGED</span>
         <ul class="compute-changes">
-          <li>用 Job ID 查詢任務狀態與輸出位置</li>
-          <li>失敗或訊息重送時，核對狀態與結果，避免重複寫入</li>
+          <li>每日資料管線執行時間縮短數倍，約 7–8 小時降至 1–2 小時</li>
+          <li>每個任務都有 Job ID，可追蹤 ready／running／done／error 狀態</li>
         </ul>
       </div>
     </div>
@@ -184,10 +198,10 @@
 2. 重複消費與等冪性問題：如果 Consumer 從 queue 取出任務且 Spark 已經在執行，但 Consumer 節點突發中斷，RabbitMQ 因逾時或未確認將訊息重送給另一個 Consumer，會不會造成同一任務重複執行、覆蓋資料或產生 double write？底層 Spark SQL 是否具備等冪性？
 3. 狀態反饋斷鏈：如果 Spark 順利運算完成並寫入 HDFS，但回報狀態給 MySQL 時發生失敗，DB 依然顯示 running，誰才是系統的 Source of Truth？
 請特別強調：原始投影片提出了架構藍圖，但並未給出完整的 distributed transaction、ack 策略、dead-letter queue 或自動補救實作，這些在真實生產環境都需要額外付出設計與維運成本。</p>
-    <p><strong>三階段效能數據的批判性解讀：</strong>原始投影片列出多項任務從 MapReduce、Spark 到 JobQueueSys 的時間對照，例如 產品 A（MapReduce 5 hr → Spark 3.5 hr → JobQueueSys 1 hr）與 產品 B（MapReduce 6.5 hr → Spark 4.5 hr → JobQueueSys 2.5 hr）。解讀這組數字時必須客觀：這是原始投影片記錄的工程演進方向性成果，但不能說成是 Job Queue 單獨造成了 5 倍或 2.6 倍加速。因為執行時間縮短同時包含了 Spark 記憶體運算、SQL 改寫、硬體配置等綜合影響；且原始資料並未說明資料量大小、測試硬體、是否包含 queue wait 排隊時間、重複測試次數，以及原始投影片「% Increase」欄位的公式口徑。因此演講時明確指出：這是一份方向性驗證數據，而不是嚴格的 benchmark 或 SLA。</p>
+    <p><strong>每日資料管線時間的解讀：</strong>依 Allen 這次提供的概略回憶，原本使用 MapReduce 時，每日流程可能需要約 7–8 小時；經歷 MapReduce、Spark 到 JobQueueSys 的系統演進後，整體約 1–2 小時可完成。這是整體流程的概估，不是各處理引擎的獨立 benchmark；不能把全部改善歸因於 Queue。個別作業、資料範圍、硬體、是否計入排隊時間與計時口徑可能不同，精確數據仍待確認。</p>
     <p><strong>工程 Trade-off：</strong>做系統不是盲目加技術。換回的是：提交與執行解耦、任務狀態可查、運算引擎可獨立擴展；付出的代價則是：狀態機一致性、訊息重複消費防範與監控維運成本。</p>
     <p><strong>資訊邊界與待 Allen 確認事項：</strong>
-1. 原始投影片支持的事實：Client／REST API／RabbitMQ／MySQL／Consumer／Spark／HDFS 元件架構；ready／running／done／error 狀態劃分；MapReduce、Spark、JobQueueSys 三階段數據表（如 產品 A 5h→3.5h→1h、產品 B 6.5h→4.5h→2.5h）；原本人工執行與 Log 難查之痛點；Git Flow 多 feature 分支規劃。
+1. 原始投影片支持的事實：Client／REST API／RabbitMQ／MySQL／Consumer／Spark／HDFS 元件架構；ready／running／done／error 狀態劃分；MapReduce、Spark、JobQueueSys 的系統演進；原本人工執行與 Log 難查之痛點；Git Flow 多 feature 分支規劃。個別產品耗時不在本頁呈現。
 2. 整理出的教學推導：4–6 分鐘節奏配置；提交／佇列／執行／觀測之責任解耦視角；RabbitMQ 與 MySQL 各司其職之設計理由；以問題形式探討的 failure modes 與資料等冪性；工程 trade-off 框架。
 3. 待 Allen 確認事項：Gamania 公司名稱是否可公開具名；專案發生年份、團隊規模與個人實際負責項目；效能數據的硬體、資料量、測量口徑與「% Increase」計算方式；RabbitMQ 的 ack／retry／DLQ／重複消費防範機制；MySQL 與 Queue 一致性設計；系統是否正式 production 上線及維運規模。
 4. 本頁不宣稱的事項：不宣稱正式 SLA、生產環境零故障、完整自動重試機制，不加入來源沒有證據的 scp、跳板機、ps aux、HTTP 202/200、Spark Driver、幾百 MB Log 等未證實細節。</p>
