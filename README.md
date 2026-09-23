@@ -14,18 +14,18 @@
 6. AI 時代學生可以怎麼準備
 7. Q&A
 
-## 簡報架構與章節（共 22 頁 / 22 個講者備註）
+## 簡報架構與章節（共 21 頁 / 21 個講者備註）
 
-本簡報共 22 頁，各章節範圍如下：
+本簡報共 21 頁，各章節範圍如下：
 
-- **01 自我介紹**（第 1–3 頁，共 3 頁）：`#intro-cover`、`#intro-now`、`#intro-path`
-- **02 資料價值產業鏈**（第 4–6 頁，共 3 頁）：`#value-divider`、`#value-chain-map`、`#value-why-now`
-- **03 初步認識 DA／DS／DE**（第 7–8 頁，共 2 頁）：`#roles-divider`、`#roles-map`（三角色常問問題、決定交付與主要風險比較表）
-- **04 資料工作實務**（第 9–11 頁，共 3 頁）：`#work-divider`、`#work-collaboration`、`#work-de-daily`
-- **05 我的路徑**（第 12–14 頁，共 3 頁）：`#career-divider`、`#career-timeline`（融合數學、大數據、後端、大規模處理、架構帶領五階段）、`#career-lessons`
-- **06 實際案例分享**（第 15–17 頁，共 3 頁）：`#cases-divider`、`#case-ingestion`（標準化入口）、`#case-compute`（效能改善與驗證）
-- **07 AI 時代該怎麼準備**（第 18–21 頁，共 4 頁）：`#ai-divider`、`#ai-changes`、`#ai-prep`、`#ai-90days`
-- **08 Q&A**（第 22 頁，共 1 頁）：`#qa`
+- **01 自我介紹**（第 1–2 頁，共 2 頁）：`#intro-cover`、`#intro-path`
+- **02 資料價值產業鏈**（第 3–5 頁，共 3 頁）：`#value-divider`、`#value-chain-map`、`#value-why-now`
+- **03 初步認識 DA／DS／DE**（第 6–7 頁，共 2 頁）：`#roles-divider`、`#roles-map`（三角色常問問題、決定交付與主要風險比較表）
+- **04 資料工作實務**（第 8–10 頁，共 3 頁）：`#work-divider`、`#work-collaboration`、`#work-de-daily`
+- **05 我的路徑**（第 11–13 頁，共 3 頁）：`#career-divider`、`#career-timeline`、`#career-lessons`（三個職涯轉折）
+- **06 實際案例分享**（第 14–16 頁，共 3 頁）：`#cases-divider`、`#case-ingestion`（電商數據中台）、`#case-compute`（Job Queue API）
+- **07 AI 時代該怎麼準備**（第 17–20 頁，共 4 頁）：`#ai-divider`、`#ai-changes`、`#ai-prep`、`#ai-90days`
+- **08 Q&A**（第 21 頁，共 1 頁）：`#qa`
 
 > **注意**：`sections/05-de-daily.html` 為歷史拆分留存檔案，目前未載入於 `deck-order.json`（DE 日常工作與取捨已整合進 04 章 `sections/04-collaboration.html` 的 `#work-de-daily`）。不變更檔名與載入順序。
 
