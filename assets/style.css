@@ -261,7 +261,7 @@ strong { font-weight: 700; color: var(--google-text); }
 #intro-path .lede { margin-bottom: 18px; }
 .about-me-layout {
   display: grid;
-  grid-template-columns: 1.04fr .96fr;
+  grid-template-columns: 728px 400px;
   gap: 24px;
   align-items: stretch;
   margin-top: 18px;
@@ -430,13 +430,13 @@ strong { font-weight: 700; color: var(--google-text); }
 .career-bullet h4 {
   margin: 0;
   color: var(--bullet-color, var(--google-text));
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.2;
 }
 .career-bullet p {
   margin-top: 2px;
   color: var(--google-muted);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.25;
 }
 .career-bullet--blue { --bullet-color: var(--google-blue-dark); }
@@ -1522,3 +1522,68 @@ kbd { display: inline-block; min-width: 25px; padding: 3px 6px; border: 1px soli
 #ai-90days .project-takeaway { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: center; margin-top: 13px; padding: 13px 18px; border-radius: 9px; background: var(--google-blue-wash); }
 #ai-90days .project-takeaway strong { color: var(--google-blue-dark); font-size: 15px; line-height: 1.4; }
 #ai-90days .project-takeaway span { color: var(--google-muted); font-size: 13px; line-height: 1.4; }
+
+/* QA Slide Custom Rules */
+#qa .pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#qa .qa-title {
+  font-size: 96px;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+}
+
+#qa .qa-contacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 72px;
+}
+
+#qa .qa-contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+#qa .qa-contact-item img {
+  width: 200px;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: block;
+}
+
+#qa .qa-contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+#qa .qa-contact-link {
+  font-size: 20px;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+}
+
+#qa .qa-contact-link:hover {
+  text-decoration: underline;
+}
+
+#qa .qa-contact-desc {
+  font-size: 16px;
+  opacity: 0.85;
+}
