@@ -142,9 +142,8 @@
           <div class="compute-node compute-node--hdfs compute-system__hdfs"><span class="mono">HDFS</span><strong>保存結果</strong></div>
           <div class="compute-system__store">
             <span class="mono">JOB STATE / METADATA · API + CONSUMER</span>
-            <strong>MySQL</strong>
-            <span>保存 Job ID、狀態、SQL 與 HDFS 輸出路徑</span>
-            <b class="compute-system__states">ready → running → done / error</b>
+            <div class="compute-system__store-copy"><strong>MySQL</strong><span>保存 Job ID、狀態、SQL 與 HDFS 輸出路徑</span></div>
+            <div class="compute-system__states" aria-label="任務狀態：ready、running、done 或 error"><span>ready</span><i>→</i><span>running</span><i>→</i><span>done</span><i>/</i><span>error</span></div>
           </div>
           <div class="compute-system__logs">
             <span class="mono">SPARK LOGS</span>

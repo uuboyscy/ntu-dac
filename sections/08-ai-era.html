@@ -23,12 +23,52 @@
   <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>給學生具體路徑：底層、脈絡、證據、判斷。可以示範讓 AI 產生一段 SQL，但接著問資料定義、NULL、重複、時區與效能，讓大家看到審查比生成更關鍵。</p></div>
 </section>
 
-<section class="slide" id="ai-90days" role="group" aria-label="AI 時代：接下來九十天可以做什麼">
+<section class="slide" id="ai-90days" role="group" aria-label="AI 時代：設計一條可驗證的資料流">
   <div class="pad">
     <p class="eyebrow"><span class="num">07</span> 可執行的起點</p>
-    <h2>接下來 90 天，<br>做一個經得起追問的作品</h2>
-    <p class="lede">作品不需要先做成一個大而空的 AI 平台。從公開資料或你熟悉的問題開始，把每一步怎麼想、怎麼做、哪裡可能錯寫下來。</p>
-    <div class="split split--equal"><div class="note-box"><h3>作品至少要能回答</h3><ul><li>問題是什麼？誰會用結果？</li><li>資料從哪裡來？有什麼偏差與限制？</li><li>流程怎麼跑？失敗時怎麼知道？</li><li>為什麼選這個方法？替代方案是什麼？</li><li>如果結論錯了，影響會是什麼？</li></ul></div><div class="note-box"><h3>可以這樣安排</h3><ul><li><strong>前 30 天：</strong>完成一個小題目與資料探索。</li><li><strong>中間 30 天：</strong>把流程、測試、文件與可重跑性補起來。</li><li><strong>最後 30 天：</strong>請別人追問，修正假設並寫下限制。</li></ul><p style="margin-top:15px">這樣別人才看得到：你會用工具，也能把模糊問題變成可以檢查的結果。</p></div></div>
+    <h2>做一條能解決問題的資料流</h2>
+    <p class="lede">從一個真實需求開始，說清楚資料怎麼來、怎麼處理、怎麼交付，出錯時又怎麼恢復。</p>
+
+    <div class="project-layout">
+      <div class="project-flow-panel">
+        <div class="project-panel-head"><span class="mono">FROM PROBLEM TO DATA FLOW</span><span>每一步都要說得出理由</span></div>
+        <div class="project-flow" aria-label="從問題到資料交付的四個設計步驟">
+          <article class="project-step"><span class="mono">01 / DEFINE</span><h3>問題</h3><p>誰用結果？要改善哪個決策？</p></article>
+          <span class="project-arrow" aria-hidden="true">→</span>
+          <article class="project-step"><span class="mono">02 / SOURCE</span><h3>資料來源</h3><p>資料在哪裡？誰負責？多久更新？</p></article>
+          <span class="project-arrow" aria-hidden="true">→</span>
+          <article class="project-step"><span class="mono">03 / TRANSFORM</span><h3>處理</h3><p>怎麼清理、關聯？每筆代表什麼？</p></article>
+          <span class="project-arrow" aria-hidden="true">→</span>
+          <article class="project-step"><span class="mono">04 / DELIVER</span><h3>交付</h3><p>誰來用？交付格式與更新頻率？</p></article>
+        </div>
+        <div class="project-architecture">
+          <span class="mono">ARCHITECTURE CHOICES</span>
+          <p>批次還是即時？用哪些儲存與排程元件？資料量或使用者增加時，瓶頸和成本會在哪裡？</p>
+        </div>
+      </div>
+
+      <aside class="project-checks" aria-label="資料流交付前的驗證項目">
+        <span class="mono">BEFORE CALLING IT DONE</span>
+        <h3>能測試，也能處理失敗</h3>
+        <ul class="project-check-list">
+          <li><strong>測試</strong><span>資料品質、轉換結果與邊界情況</span></li>
+          <li><strong>失敗處理</strong><span>告警、重試、避免重複寫入、補資料</span></li>
+          <li><strong>擴展</strong><span>資料量增加後的延遲、成本與瓶頸</span></li>
+          <li><strong>交付</strong><span>架構圖、可驗證結果與已知限制</span></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="project-takeaway">
+      <strong>資料流不只要跑通，還要能說明、能驗證、出錯能處理。</strong>
+      <span>把假設、測試與取捨一起放進作品。</span>
+    </div>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 4 分鐘。</strong>這張不給無限長的學習清單。作品的價值在於可被追問：來源、假設、流程、錯誤與取捨都留下來，面試時才有可以深入討論的證據。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 4–5 分鐘。</strong>重點不是規定幾天做完，而是讓作品呈現一條完整、能被追問的資料流。</p>
+    <p><strong>先定義問題：</strong>先說清楚誰需要這份資料、要做什麼決策，或原本哪個工作很難完成。問題定不清楚，後面即使把資料搬進倉庫，也可能沒人會用。</p>
+    <p><strong>確認資料與處理：</strong>列出資料來源、來源負責人、權限、更新頻率與資料限制，再說明清理、關聯、轉換和結果粒度。用一張架構圖交代資料如何流動，以及為什麼選批次或即時處理、如何選儲存和排程方式。</p>
+    <p><strong>驗證可靠性：</strong>準備幾種測試：輸入資料品質、轉換結果、空值／重複等邊界情況，以及流程失敗時是否能發現。再說明重試、避免重複寫入和補資料如何設計；如果資料量增加，估計哪裡會先成為瓶頸，成本和延遲如何變化。</p>
+    <p><strong>交付作品：</strong>讓別人能看懂問題、資料來源、處理步驟、架構取捨、測試結果和已知限制。作品不必包成產品，也不必一開始就做很大，但要能說明它解決什麼問題，以及資料流在正常和失敗時各怎麼運作。</p>
+  </div>
 </section>
