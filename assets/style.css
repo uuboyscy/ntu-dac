@@ -1100,31 +1100,20 @@ kbd { display: inline-block; min-width: 25px; padding: 3px 6px; border: 1px soli
 
 /* Responsive and print */
 @media (max-width: 900px) {
-  html, body { overflow: auto; }
-  .stage { position: relative; inset: auto; min-height: calc(100vh - 64px); padding: 18px; }
-  .deck { transform: scale(min(var(--s), 1)); }
-  .split, .split--wide, .split--equal, .day-layout, .ai-layout { grid-template-columns: 1fr; gap: 20px; }
-  .value-flow { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .value-flow__rail { display: none; }
-  .value-flow__stage { padding: 10px 12px; text-align: left; border: 1px solid var(--google-line-soft); border-radius: 10px; }
-  .value-flow__stage + .value-flow__stage { border-left: 1px solid var(--google-line-soft); }
-  .value-flow__node { margin: 0 0 8px; }
-  .value-flow__outcomes { grid-template-columns: 1fr 1fr; }
-  .career { grid-template-columns: 1fr 1fr; }
-  .value-flow__outcome:nth-child(2n) { border-right: 0; }
-  .contract, .prepare-steps, .qa-topics { grid-template-columns: 1fr 1fr; }
-  .pain-grid, .case-grid { grid-template-columns: 1fr 1fr; }
-  .tool-gap--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .case-step:nth-child(2n) { border-right: 0; }
-  .architecture { grid-template-columns: 1fr; }
-  .arch-arrow { transform: rotate(90deg); }
-  .slide h2 { font-size: 38px; }
-  .section-divider h2 { font-size: 48px; }
-  #intro-path .about-me-layout { grid-template-columns: 1fr; gap: 20px; }
-  #intro-path .about-me-card, #intro-path .career-card { min-height: auto; }
-  #intro-path .about-me-grid { grid-template-columns: 1fr 1fr; }
-  #intro-path .career-list::before { left: 87px; }
-  #intro-path .career-step { grid-template-columns: 80px 1fr; }
+  html, body { overflow: hidden; }
+  .stage {
+    position: fixed;
+    inset: 0 0 var(--chrome-h, 64px) 0;
+    min-height: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .deck { flex: none; transform: scale(var(--s)); }
+  .chrome { padding: 0 8px; }
+  .brand span { display: none; }
 }
 @media print {
   html, body { overflow: visible; background: #fff; }
