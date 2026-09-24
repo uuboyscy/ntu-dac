@@ -491,8 +491,8 @@
 
     <div class="compute-bottom">
       <div class="compute-evidence">
-        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span><span>演進前後概估</span></div>
-        <div class="compute-duration-flow" aria-label="每日資料管線處理時間，從 MapReduce 經 Spark 演進至 JobQueueSys">
+        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span></div>
+        <div class="compute-duration-flow" aria-label="Allen 回憶的每日資料管線處理時間：從 MapReduce 改用 Spark，後續整合 Spark 與 Job Queue 系統">
           <div class="compute-duration-stage compute-duration-stage--before">
             <span class="mono">原流程</span>
             <strong>MapReduce</strong>
@@ -507,38 +507,33 @@
           <span class="compute-duration-arrow" aria-hidden="true">→</span>
           <div class="compute-duration-stage compute-duration-stage--after">
             <span class="mono">後續系統</span>
-            <strong>JobQueueSys</strong>
+            <strong>Spark + Job Queue 系統</strong>
             <b>約 1–2 小時</b>
           </div>
         </div>
-        <p class="compute-footnote">依當時整體流程的概略估計；不同作業與測量範圍可能不同，改善來自逐步演進，不單獨歸因於 Queue。</p>
       </div>
       <div class="compute-decision">
         <span class="mono">WHAT CHANGED</span>
         <ul class="compute-changes">
-          <li>每日資料管線執行時間縮短數倍，約 7–8 小時降至 1–2 小時</li>
+          <li>任務經 API 提交與排隊，不必再手動進伺服器執行</li>
           <li>每個任務都有 Job ID，可追蹤 ready／running／done／error 狀態</li>
         </ul>
       </div>
     </div>
   </div>
   <div class="slide-notes" hidden>
-    <p><strong>這張約 4–6 分鐘。分享節奏規劃：</strong>0:00–1:00 講原本痛點與人工流程限制；1:00–2:30 拆解 Job Queue API 架構、非同步邊界與 RabbitMQ／MySQL 責任分工；2:30–3:30 提出分散式系統的關鍵 failure mode 問題；3:30–4:30 批判性解讀三階段效能數據與口徑；4:30–5:30 總結工程 trade-off 與資料工程職涯啟示。</p>
+    <p><strong>這張約 4–6 分鐘。分享節奏規劃：</strong>0:00–1:00 講原本痛點與人工流程限制；1:00–2:30 拆解 Job Queue API 架構與 RabbitMQ／MySQL 的責任分工；2:30–3:30 用一個任務失敗的情境說明狀態追蹤與排錯；3:30–4:30 說明每日流程時間是概估，以及為什麼不能把改善歸因於 Queue；4:30–5:30 收束到工程取捨與資料工程職涯啟示。</p>
     <p><strong>原本的工作方式與痛點：</strong>原始投影片整理出舊有流程：編輯程式 → 上傳到伺服器 → Crontab 或人工執行。當時面臨的痛點不只是執行速度慢，而是責任混在一起：Spark 程式不易呼叫、大量 Log 集中難以排查、ETL 邏輯全部綁在單一腳本不易維護，且執行進度與狀態完全不可追蹤。</p>
     <p><strong>架構流程與非同步邊界：</strong>重構後分為清楚的水平鏈路：Client 透過 REST API 提交任務，API 建立 Job ID 並立即回傳，同時將工作推送到 RabbitMQ ready queue；Consumer 訂閱 queue，取出任務後啟動 Spark 分散式運算；處理後的資料寫入 HDFS。這當中的「非同步邊界」在於：Client 與 API 完成提交後就結束同步等待，後續排隊與 Spark 執行完全在背景進行，避免長時間佔用連線。</p>
     <p><strong>為什麼 RabbitMQ 負責任務傳遞／排隊，而 MySQL 負責持久化狀態／metadata：</strong>這代表兩種完全不同的系統責任。RabbitMQ 是傳遞性、暫態的訊息佇列，專長是緩衝削峰、任務解耦與分派（Consumer 處理完即消費刪除），但不適合用來做狀態查詢、複雜關聯或長期追蹤；MySQL 則是持久化儲存，負責保存 Job ID、請求參數、SQL 內容、目前狀態與產出路徑。兩者搭配是為了讓「任務分派」與「狀態查詢」各自獨立演進。另外 Log System 則專門收集 Spark 執行日誌，讓排查錯誤不必回到各節點翻查檔案。</p>
     <p><strong>Job lifecycle：</strong>以 ready → running → done／error 追蹤。API 建立任務時寫入 ready，Consumer 取出任務並啟動 Spark 時更新為 running，Spark 成功結束寫入 HDFS 則更新為 done，若執行失敗則記錄為 error。提交者可憑 Job ID 隨時回到 API／MySQL 查詢目前狀態與輸出路徑。</p>
-    <p><strong>以問題形式探討 Failure Modes（不要把未確認的機制寫成已存在）：</strong>在課堂上可以用三個架構問題引導學生思考分散式邊界：
-1. 雙寫一致性問題：如果 REST API 成功將 Job ID 寫入 MySQL，但在向 RabbitMQ publish 訊息時網路斷線或當機，該怎麼辦？此時 DB 有記錄但 queue 永遠沒有任務，系統如何發現與補償？
-2. 重複消費與等冪性問題：如果 Consumer 從 queue 取出任務且 Spark 已經在執行，但 Consumer 節點突發中斷，RabbitMQ 因逾時或未確認將訊息重送給另一個 Consumer，會不會造成同一任務重複執行、覆蓋資料或產生 double write？底層 Spark SQL 是否具備等冪性？
-3. 狀態反饋斷鏈：如果 Spark 順利運算完成並寫入 HDFS，但回報狀態給 MySQL 時發生失敗，DB 依然顯示 running，誰才是系統的 Source of Truth？
-請特別強調：原始投影片提出了架構藍圖，但並未給出完整的 distributed transaction、ack 策略、dead-letter queue 或自動補救實作，這些在真實生產環境都需要額外付出設計與維運成本。</p>
-    <p><strong>每日資料管線時間的解讀：</strong>依 Allen 這次提供的概略回憶，原本使用 MapReduce 時，每日流程可能需要約 7–8 小時；經歷 MapReduce、Spark 到 JobQueueSys 的系統演進後，整體約 1–2 小時可完成。這是整體流程的概估，不是各處理引擎的獨立 benchmark；不能把全部改善歸因於 Queue。個別作業、資料範圍、硬體、是否計入排隊時間與計時口徑可能不同，精確數據仍待確認。</p>
+    <p><strong>用一個問題帶出狀態追蹤：</strong>任務排隊後如果執行失敗，提交者怎麼透過 Job ID 知道它停在哪個狀態、去哪裡看 Log？這說明了為什麼任務狀態要能查、執行紀錄要能集中查看。把它當成架構判斷的提問，不延伸宣稱自動重試或補救機制已經實作。</p>
+    <p><strong>每日資料管線時間的解讀：</strong>依 Allen 這次提供的概略回憶，原本使用 MapReduce 時，每日流程可能需要約 7–8 小時；後來改用 Spark，並整合 Job Queue 系統後，整體約 1–2 小時可完成。這是整體流程的概估，不是各處理引擎的獨立 benchmark；不能把全部改善歸因於 Queue。個別作業、資料範圍、硬體、是否計入排隊時間與計時口徑可能不同，精確數據仍待確認。</p>
     <p><strong>工程 Trade-off：</strong>做系統不是盲目加技術。換回的是：提交與執行解耦、任務狀態可查、運算引擎可獨立擴展；付出的代價則是：狀態機一致性、訊息重複消費防範與監控維運成本。</p>
     <p><strong>資訊邊界與待 Allen 確認事項：</strong>
-1. 原始投影片支持的事實：Client／REST API／RabbitMQ／MySQL／Consumer／Spark／HDFS 元件架構；ready／running／done／error 狀態劃分；MapReduce、Spark、JobQueueSys 的系統演進；原本人工執行與 Log 難查之痛點；Git Flow 多 feature 分支規劃。個別產品耗時不在本頁呈現。
-2. 整理出的教學推導：4–6 分鐘節奏配置；提交／佇列／執行／觀測之責任解耦視角；RabbitMQ 與 MySQL 各司其職之設計理由；以問題形式探討的 failure modes 與資料等冪性；工程 trade-off 框架。
-3. 待 Allen 確認事項：Gamania 公司名稱是否可公開具名；專案發生年份、團隊規模與個人實際負責項目；效能數據的硬體、資料量、測量口徑與「% Increase」計算方式；RabbitMQ 的 ack／retry／DLQ／重複消費防範機制；MySQL 與 Queue 一致性設計；系統是否正式 production 上線及維運規模。
+1. 原始投影片支持的事實：Client／REST API／RabbitMQ／MySQL／Consumer／Spark／HDFS 元件架構；ready／running／done／error 狀態劃分；從 MapReduce 改用 Spark、後續整合 Job Queue 系統的演進；原本人工執行與 Log 難查之痛點；Git Flow 多 feature 分支規劃。個別產品耗時不在本頁呈現。
+2. 整理出的教學推導：4–6 分鐘節奏配置；提交／佇列／執行／觀測之責任解耦視角；RabbitMQ 與 MySQL 各司其職之設計理由；用任務失敗的提問說明狀態追蹤與排錯；工程取捨的整理方式。
+3. 待 Allen 確認事項：Gamania 公司名稱是否可公開具名；專案發生年份、團隊規模與個人實際負責項目；概估時間的資料範圍、硬體、是否包含排隊時間與測量口徑；RabbitMQ 的 ack／retry／DLQ／重複消費防範機制；MySQL 與 Queue 一致性設計；系統是否正式 production 上線及維運規模。
 4. 本頁不宣稱的事項：不宣稱正式 SLA、生產環境零故障、完整自動重試機制，不加入來源沒有證據的 scp、跳板機、ps aux、HTTP 202/200、Spark Driver、幾百 MB Log 等未證實細節。</p>
   </div>
 </section>

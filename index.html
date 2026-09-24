@@ -461,8 +461,8 @@
 
     <div class="compute-bottom">
       <div class="compute-evidence">
-        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span><span>演進前後概估</span></div>
-        <div class="compute-duration-flow" aria-label="每日資料管線處理時間，從 MapReduce 經 Spark 演進至 JobQueueSys">
+        <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span></div>
+        <div class="compute-duration-flow" aria-label="Allen 回憶的每日資料管線處理時間：從 MapReduce 改用 Spark，後續整合 Spark 與 Job Queue 系統">
           <div class="compute-duration-stage compute-duration-stage--before">
             <span class="mono">原流程</span>
             <strong>MapReduce</strong>
@@ -477,16 +477,15 @@
           <span class="compute-duration-arrow" aria-hidden="true">→</span>
           <div class="compute-duration-stage compute-duration-stage--after">
             <span class="mono">後續系統</span>
-            <strong>JobQueueSys</strong>
+            <strong>Spark + Job Queue 系統</strong>
             <b>約 1–2 小時</b>
           </div>
         </div>
-        <p class="compute-footnote">依當時整體流程的概略估計；不同作業與測量範圍可能不同，改善來自逐步演進，不單獨歸因於 Queue。</p>
       </div>
       <div class="compute-decision">
         <span class="mono">WHAT CHANGED</span>
         <ul class="compute-changes">
-          <li>每日資料管線執行時間縮短數倍，約 7–8 小時降至 1–2 小時</li>
+          <li>任務經 API 提交與排隊，不必再手動進伺服器執行</li>
           <li>每個任務都有 Job ID，可追蹤 ready／running／done／error 狀態</li>
         </ul>
       </div>
