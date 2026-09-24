@@ -42,34 +42,39 @@
   </div>
 </section>
 
-<section class="slide" id="value-why-now" role="group" aria-label="資料職位為什麼近年爆紅">
+<section class="slide" id="value-why-now" role="group" aria-label="企業為什麼需要資料職位：從報表到 AI">
   <div class="pad">
-    <p class="eyebrow"><span class="num">02</span> 為什麼是現在？</p>
-    <h2>資料職位為什麼在這幾年變多？</h2>
-    <p class="thesis">資料一旦進入營運，錯一次就不只是報表錯；庫存、行銷、風控與客戶服務都可能跟著錯。</p>
-    <div class="pain-grid">
-      <article class="pain-card pain-card--blue">
-        <span class="pain-card__no">01 / DAILY</span>
-        <h3>資料變成每天都要跑的系統</h3>
-        <p>流程不是跑完一次就結束。半夜斷掉、隔天才發現，報表、推薦或營運數字就會一起延遲。</p>
-      </article>
-      <article class="pain-card pain-card--red">
-        <span class="pain-card__no">02 / DEFINITION</span>
-        <h3>同一個數字，常常有不同答案</h3>
-        <p>不同團隊各自計算營收或活躍用戶，大家都能交報表，卻沒有人能說明哪個才是基準。</p>
-      </article>
-      <article class="pain-card pain-card--yellow">
-        <span class="pain-card__no">03 / SCALE</span>
-        <h3>資料量變大，錯誤也變得更貴</h3>
-        <p>查詢變慢、回補變久、雲端費用上升。問題不再只是能不能算，而是能不能穩定地算下去。</p>
-      </article>
-      <article class="pain-card pain-card--green">
-        <span class="pain-card__no">04 / AI</span>
-        <h3>AI 越快，越快暴露資料問題</h3>
-        <p>模型可以很快給答案，但來源過期、欄位定義不一致，回答再順也可能是錯的。</p>
-      </article>
+    <p class="eyebrow"><span class="num">02</span> 從報表到 AI</p>
+    <h2>企業為什麼需要資料職位？</h2>
+
+    <div class="why5-question">
+      <span class="why5-question__label">同一個問題</span>
+      <p>昨天的營收是多少？</p>
     </div>
-    <p class="kicker"><strong>資料職位變多，是因為資料已經從分析素材，變成會影響營運的系統。</strong></p>
+
+    <div class="why5-eras" aria-label="同一個營收問題，在過去與 AI 時代的不同產出方式">
+      <div class="why5-era">
+        <span class="why5-era__time">過去</span>
+        <h3>人整理資料、製作報表</h3>
+        <p>訂單與退款散在不同系統。報表要定期更新，得先把資料接起來。</p>
+      </div>
+      <div class="why5-era why5-era--ai">
+        <span class="why5-era__time">AI 時代</span>
+        <h3>AI 協助產生圖表與摘要</h3>
+        <p>如果退款漏算，AI 也可能很快交出一份看起來合理的答案。</p>
+      </div>
+    </div>
+
+    <div class="why5-common">
+      <span>資料職位的工作</span>
+      <p>有人要說清楚營收怎麼算、資料何時更新；數字有問題時，找得到來源，也修得回來。</p>
+    </div>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>這頁不是要說「資料變多，所以需要資料工程師」這麼簡單。真正的變化是：資料開始進入每天的營運流程，一次錯誤會沿著下游傳出去。</p><p>可以依序講四個痛點：流程需要每天穩定跑；不同部門對同一個指標有不同定義；資料量放大後，速度、回補與成本都變成工程問題；AI 讓答案產生得更快，也讓錯誤定義與過期資料更快被放大。</p><p>收尾時強調：資料職位增加，不是因為工具名稱變多，而是資料已經會影響庫存、行銷、風控與客戶服務。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>這張約 4–5 分鐘。</strong>先問學生：「昨天的營收是多少？」同一個問題，在不同時期可以用不同工具回答。畫面中的退款漏算是用來討論風險的假設情境，不是實際客戶事故。</p>
+    <p><strong>過去：</strong>企業在生成式 AI 普及前就有反覆出現的報表需求。當訂單、退款等資料分散在多個系統，營收算法又要讓各部門一致，就需要有人建立可重跑的資料流程並持續維護。需求規模、成本與風險會影響公司是否成立專職資料團隊；小團隊也可能由其他職位兼做。</p>
+    <p><strong>現在：</strong>AI 可以幫忙產生圖表與摘要，卻仍需依靠正確的來源、清楚的指標定義和可驗證的結果。假如退款漏算，AI 可能把失真的營收數字整理成看似合理的答案。請把這說成一種可能的風險，不推論所有企業都曾經歷同一段過程。</p>
+    <p><strong>收束與轉場：</strong>資料來源、更新方式、指標定義與異常排查都需要有人負責。下一段再看 DA、DS、DE 會從哪些不同的問題切入；資料治理也需要業務端的資料擁有者參與。</p>
+    <p><strong>參考：</strong><a href="https://www.redbooks.ibm.com/abstracts/sg248126.html">IBM Redbooks：資料倉儲、BI 與治理（2013）</a>；<a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai-faq">Microsoft：準備資料供 Copilot 使用</a>。</p>
+  </div>
 </section>
