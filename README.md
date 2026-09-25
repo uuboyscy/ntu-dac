@@ -58,11 +58,11 @@ python3 scripts/build_deck.py
 
 ## 統一視覺系統
 
-這版採用「Google 簡約設計風格（Google Material-inspired）」：
+這版採用 Google Material-inspired 視覺方向；這是簡報的設計參考，並非 Google 官方範本：
 
-- 以 Google 簡約風格與配色為主，沿用 Google 字體（Google Sans / Roboto / Roboto Mono）與經典藍色標題（`#1a73e8` / `#4285f4`）
+- 標題以 Google 藍（`#1a73e8` / `#4285f4`）為主；字體優先使用 Google Sans / Roboto / Roboto Mono，未安裝時使用系統後備字體，保持離線可開啟
 - 角色以 DA 藍（`#4285f4`）、DS 紅（`#ea4335`）、DE 綠（`#34a853`）點綴
-- 白色與 `#f8f9fa` 背景、乾淨表格線條與自然留白
+- 白色與 `#f8f9fa` 背景、清楚的表面層級、輕量陰影與自然留白
 - 大字級、充足留白與清楚的閱讀順序，讓每頁只留下一個主要觀點
 - 一張投影片只放一個主要觀點，再用案例、流程或責任表支撐
 - 案例頁保留真實工程判斷，但不放公司名稱、客戶名稱、敏感欄位或未確認的內部數字

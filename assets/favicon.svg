@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="把資料變成更好的決策">
-  <rect width="64" height="64" rx="14" fill="#17181B"/>
-  <g fill="none" stroke="#F7F4EF" stroke-width="4" stroke-linecap="round">
+  <rect width="64" height="64" rx="14" fill="#1a73e8"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
     <path d="M16 44 L28 32"/>
   </g>
-  <g fill="none" stroke="#E8735A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#fbbc04" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
     <path d="M28 32 L38 40 L48 20"/>
   </g>
-  <circle cx="28" cy="32" r="4.5" fill="#F7F4EF"/>
+  <circle cx="28" cy="32" r="4.5" fill="#ffffff"/>
 </svg>
