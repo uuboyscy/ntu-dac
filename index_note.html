@@ -341,12 +341,12 @@
     <p class="eyebrow"><span class="num">05</span> 我的路徑 · CAREER PATH</p>
     <h2>從後端與資料處理，<br>走到架構設計</h2>
     <p class="lede">我在後端與大量資料處理的工作裡找到方向，後來逐步接下流程、架構與團隊協作的責任。</p>
-    <div class="career"><article class="career-item"><span class="era">01 / FOUNDATION</span><h3>數學背景</h3><p>練習定義、假設與驗證，習慣先把模糊問題拆開。</p><p class="learn">面對抽象問題的耐心</p></article><article class="career-item"><span class="era">02 / ENTRY</span><h3>大數據分析訓練</h3><p>從大數據分析訓練接觸資料清理與處理，逐漸注意到背後的工程問題。</p><p class="learn">接觸資料處理與工程問題</p></article><article class="career-item"><span class="era">03 / BACKEND</span><h3>新創後端工程</h3><p>進入資料導向團隊，以後端開發為主並接觸運算框架，發現自己熱愛大量資料可靠流動。</p><p class="learn">讓系統在限制下運作</p></article><article class="career-item"><span class="era">04 / SCALE</span><h3>大規模資料處理</h3><p>正式以資料工程師角色工作，以分散式運算與雲端平台處理龐大資料量，確保管線可重跑。</p><p class="learn">讓流程可重跑、可觀測</p></article><article class="career-item"><span class="era">05 / LEAD</span><h3>架構設計與技術決策</h3><p>從資料處理延伸到資料治理、架構規劃與多團隊協作，對技術選擇、邊界與長期維護負責。</p><p class="learn">對選擇與系統結果負責</p></article></div>
+    <div class="career"><article class="career-item"><span class="era">01 / FOUNDATION</span><h3>數學背景</h3><p>在數學系學寫程式，也透過解題練習邏輯推理。</p><p class="learn">程式入門與邏輯訓練</p></article><article class="career-item"><span class="era">02 / ENTRY</span><h3>大數據分析訓練</h3><p>從大數據分析訓練接觸資料清理與處理，逐漸注意到背後的工程問題。</p><p class="learn">接觸資料處理與工程問題</p></article><article class="career-item"><span class="era">03 / BACKEND</span><h3>新創後端工程</h3><p>進入資料導向團隊，以後端開發為主並接觸運算框架，發現自己熱愛大量資料可靠流動。</p><p class="learn">讓系統在限制下運作</p></article><article class="career-item"><span class="era">04 / SCALE</span><h3>大規模資料處理</h3><p>正式以資料工程師角色工作，以分散式運算與雲端平台處理龐大資料量，確保管線可重跑。</p><p class="learn">讓流程可重跑、可觀測</p></article><article class="career-item"><span class="era">05 / LEAD</span><h3>架構設計與技術決策</h3><p>從資料處理延伸到資料治理、架構規劃與多團隊協作，對技術選擇、邊界與長期維護負責。</p><p class="learn">對選擇與系統結果負責</p></article></div>
     <div class="quote slide-takeaway">我找到自己喜歡的工作，是讓大量資料在短時間內<strong>可靠地流過系統</strong>。</div>
   </div>
   <div class="slide-notes" hidden>
     <p><strong>24:00–26:30｜2.5 分鐘</strong></p>
-    <p>這頁只帶五個階段，不念每張卡片的全文：數學訓練、大數據分析訓練、後端工程、資料工程、架構設計與技術決策。</p>
+    <p>這頁只帶五個階段，不念每張卡片的全文：先在數學系學寫程式、練邏輯，再經過大數據分析訓練、後端工程、資料工程，走到架構設計與技術決策。</p>
     <p>用一句話串起責任變化：從把自己的功能做出來，到讓資料流程穩定，再到考慮跨系統的取捨。真正讓我改變方向的經驗留到下一頁。</p>
   </div>
 </section>
@@ -526,7 +526,7 @@
           <span class="compute-system__arrow compute-system__arrow--client" aria-hidden="true">→</span>
           <div class="compute-node compute-node--api compute-system__api"><span class="mono">REST API</span><strong>建立 Job</strong></div>
           <span class="compute-system__arrow compute-system__arrow--api" aria-hidden="true">→</span>
-          <div class="compute-node compute-node--queue compute-system__queue"><span class="mono">RABBITMQ</span><strong>ready queue</strong></div>
+          <div class="compute-node compute-node--queue compute-system__queue"><span class="mono">QUEUE</span><strong>任務排隊</strong></div>
           <div class="compute-system__return"><strong>回傳 Job ID</strong><span>提交者可查狀態</span></div>
           <div class="compute-system__async"><span>背景執行</span><b>Client 不必等待 Spark 完成</b></div>
           <span class="compute-system__down" aria-hidden="true">↓</span>
@@ -582,7 +582,7 @@
   <div class="slide-notes" hidden>
     <p><strong>36:00–41:00｜5 分鐘</strong></p>
     <p>先講舊流程的兩個痛點：程式得上傳伺服器才執行，提交後難查任務狀態與錯誤紀錄。不要逐條朗讀左欄。</p>
-    <p>沿主圖走一次：Client 向 API 提交任務取得 Job ID，RabbitMQ 用於排隊與分派，Consumer 背景啟動 Spark，結果存入 HDFS；MySQL 留下可查詢的任務狀態與輸出路徑，Log System 集中看執行紀錄。RabbitMQ 支援訊息持久化；確認與移除訊息的時機取決於實際設定，本案例不延伸未核對的重試機制。</p>
+    <p>沿主圖走一次：Client 向 API 提交任務取得 Job ID，Queue 讓任務排隊等待處理，Consumer 背景啟動 Spark，結果存入 HDFS；MySQL 留下可查詢的任務狀態與輸出路徑，Log System 集中看執行紀錄。備查：此案例的 Queue 使用 RabbitMQ；訊息持久化、確認與移除的時機取決於實際設定，不延伸未核對的重試機制。</p>
     <p>問聽眾一個問題：任務失敗時，提交者怎麼知道停在哪裡？用 ready、running、done／error 和 Log 說明「可追蹤」的價值。</p>
     <p>底部時間圖只作流程演進的概略說明：原先 MapReduce 約 7–8 小時，改用 Spark 並整合後續系統後約 1–2 小時；不要把這說成 Queue 單獨帶來的效果，也不當成兩個引擎的嚴格效能比較。</p>
     <p>收在取捨：提交與執行分開後，狀態能查，但系統也多了狀態同步與監控工作。下一段談 AI 時代，仍要有人理解這些系統責任。</p>

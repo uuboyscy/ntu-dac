@@ -126,7 +126,7 @@
           <span class="compute-system__arrow compute-system__arrow--client" aria-hidden="true">→</span>
           <div class="compute-node compute-node--api compute-system__api"><span class="mono">REST API</span><strong>建立 Job</strong></div>
           <span class="compute-system__arrow compute-system__arrow--api" aria-hidden="true">→</span>
-          <div class="compute-node compute-node--queue compute-system__queue"><span class="mono">RABBITMQ</span><strong>ready queue</strong></div>
+          <div class="compute-node compute-node--queue compute-system__queue"><span class="mono">QUEUE</span><strong>任務排隊</strong></div>
           <div class="compute-system__return"><strong>回傳 Job ID</strong><span>提交者可查狀態</span></div>
           <div class="compute-system__async"><span>背景執行</span><b>Client 不必等待 Spark 完成</b></div>
           <span class="compute-system__down" aria-hidden="true">↓</span>
@@ -182,7 +182,7 @@
   <div class="slide-notes" hidden>
     <p><strong>36:00–41:00｜5 分鐘</strong></p>
     <p>先講舊流程的兩個痛點：程式得上傳伺服器才執行，提交後難查任務狀態與錯誤紀錄。不要逐條朗讀左欄。</p>
-    <p>沿主圖走一次：Client 向 API 提交任務取得 Job ID，RabbitMQ 用於排隊與分派，Consumer 背景啟動 Spark，結果存入 HDFS；MySQL 留下可查詢的任務狀態與輸出路徑，Log System 集中看執行紀錄。RabbitMQ 支援訊息持久化；確認與移除訊息的時機取決於實際設定，本案例不延伸未核對的重試機制。</p>
+    <p>沿主圖走一次：Client 向 API 提交任務取得 Job ID，Queue 讓任務排隊等待處理，Consumer 背景啟動 Spark，結果存入 HDFS；MySQL 留下可查詢的任務狀態與輸出路徑，Log System 集中看執行紀錄。備查：此案例的 Queue 使用 RabbitMQ；訊息持久化、確認與移除的時機取決於實際設定，不延伸未核對的重試機制。</p>
     <p>問聽眾一個問題：任務失敗時，提交者怎麼知道停在哪裡？用 ready、running、done／error 和 Log 說明「可追蹤」的價值。</p>
     <p>底部時間圖只作流程演進的概略說明：原先 MapReduce 約 7–8 小時，改用 Spark 並整合後續系統後約 1–2 小時；不要把這說成 Queue 單獨帶來的效果，也不當成兩個引擎的嚴格效能比較。</p>
     <p>收在取捨：提交與執行分開後，狀態能查，但系統也多了狀態同步與監控工作。下一段談 AI 時代，仍要有人理解這些系統責任。</p>
