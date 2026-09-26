@@ -1,6 +1,9 @@
 <section class="slide slide--dark section-divider" id="cases-divider" role="group" aria-label="實際案例分享：章節開場">
   <div class="pad"><p class="section-code">06 / CASE STUDIES</p><h2>從案例看，<br>技術選擇怎麼做出來</h2><div class="divider-line"></div><p class="section-intro">下面用兩個去識別化的工程案例，看不同角色先問什麼，也看每個方案要付出什麼代價。</p></div>
-  <div class="slide-notes" hidden><p>先說明案例邊界：客戶名稱、內部數字與敏感欄位都不放進來。這裡保留問題結構與技術取捨，讓大家看到工程思維如何落地。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>31:30–32:00｜0.5 分鐘</strong></p>
+    <p>轉場：用兩個去識別化的案例，看實際資料問題與工程取捨。先講問題和決定，再看圖上的工具。</p>
+  </div>
 </section>
 
 <section class="slide" id="case-ingestion" role="group" aria-label="案例一：電商數據中台與資料治理">
@@ -8,7 +11,7 @@
     <div class="case-banner">
       <div>
         <p class="eyebrow"><span class="num">06</span> 案例一 · DATA PLATFORM</p>
-        <h2>把分散的電商資料，<br>整成公司共用的數據底座</h2>
+        <h2>把分散的電商資料，<br>整成共用資料平台</h2>
       </div>
       <p class="case-label">電商數據中台專案</p>
     </div>
@@ -17,11 +20,7 @@
       <aside class="ecom-context" aria-label="專案背景與問題">
         <span class="mono">THE PROBLEM</span>
         <h3>資料量不大，<br>但來源與邏輯很分散</h3>
-        <div class="ecom-source-list" aria-label="主要資料來源">
-          <span>線上會員</span><span>線下會員</span>
-          <span>商品資料</span><span>會員標籤</span>
-        </div>
-        <p>公司報表各自加工資料，SQL／ETL 邏輯與排程散落在不同地方，重跑和補資料也不易統一管理。</p>
+        <p>各部門的報表邏輯與排程散在不同地方，出錯後不易追查或補資料。</p>
         <div class="ecom-team">
           <span class="mono">DATA TEAM</span>
           <strong>集中控管資料邏輯與排程</strong>
@@ -38,8 +37,8 @@
             <span class="ecom-stage__label">SOURCES</span>
             <strong>公司資料</strong>
             <div class="ecom-chips">
-              <span>線上會員</span><span>線下會員</span>
-              <span>商品資料</span><span>會員標籤</span>
+              <span>線上／線下會員</span>
+              <span>商品與會員標籤</span>
               <span>API／行為資料</span>
             </div>
           </div>
@@ -85,25 +84,24 @@
       </div>
     </div>
 
-    <div class="ecom-governance" aria-label="治理目標">
-      <strong>治理落點</strong>
-      <span>報表口徑一致</span><b>·</b><span>品質可檢核</span><b>·</b><span>資料來源可追溯</span><b>·</b><span>排程可重跑與補資料</span>
+    <div class="ecom-governance slide-takeaway" aria-label="治理成果">
+      <strong>整理後</strong>
+      <span>報表邏輯與排程集中管理；有問題時，能追來源、重跑或補資料。</span>
     </div>
   </div>
   <div class="slide-notes" hidden>
-    <p><strong>約 4–5 分鐘。分享節奏：</strong>0:00–1:00 說明資料量不大、難處在資料和處理邏輯分散；1:00–2:30 走一次來源、載入、BigQuery/dbt 分層與下游的資料路徑；2:30–3:30 說明 Prefect 如何統一排程，讓 Data team 管理執行與重跑／補資料；3:30–4:30 收束到數據治理：報表口徑、品質檢核與來源追溯。</p>
-    <p><strong>背景與問題：</strong>這是電商平台相關專案。原本資料量不算大，但線上會員、線下會員、商品與會員標籤等資料分散；公司層級報表所需的加工邏輯與排程也分布在不同地方。維護時要找出資料在哪裡處理、由哪個排程產生；出錯後要重跑或補資料，也不容易由同一團隊統一管理。</p>
-    <p><strong>架構圖說明：</strong>圖中資料來源包含資料庫／會員資料、檔案、API 與使用者行為；依來源透過 Data Fusion、Python 或 Cloud Storage 載入 BigQuery。進入 BigQuery 後由 dbt 按 Source、ODS、STG、Dimensions &amp; Details、Mart 分層整理，再供 Power BI、Data Science 工作流程、CDP／MA 與 Reverse ETL 使用。這些載入工具是來源路徑的組合，不代表每種資料都依序通過每個工具。</p>
-    <p><strong>排程與治理：</strong>Prefect 用來集中編排與監控資料流程，讓 Data team 統一管理排程、執行狀態，以及失敗後的重跑與補資料。重點不只是把資料放進 BigQuery，而是把原本散落各處的報表加工邏輯收斂到 Data team，使共用資料模型有一致的責任窗口。</p>
-    <p><strong>保留的工程核心：</strong>資料平台集中後，仍需定義各層資料的口徑與粒度，對轉換結果做品質檢核，並保留來源追溯。這延續原案例「資料可信、出了問題能定位」的目標，但不再把故事聚焦在金融業身份橋接或模型特徵工程。</p>
-    <p><strong>資訊邊界：</strong>架構名稱與來源／工具／分層／下游依 Allen 提供的圖與描述整理。沒有提供精確資料量、表數、排程頻率、節省時間或錯誤率，因此本頁不宣稱量化效能提升、特定 SLA 或正式治理指標；口頭補充前請先確認可公開的專案範圍與工具實際使用方式。</p>
+    <p><strong>32:00–36:00｜4 分鐘</strong></p>
+    <p>先說問題：電商資料量不一定大，難處在會員、商品與報表邏輯散在各處，排程和補資料不易一起管理。</p>
+    <p>沿圖走一次：來源載入 BigQuery，由 dbt 分層整理，提供報表與其他下游使用；Prefect 集中安排與觀察流程。Data Fusion、Python、Cloud Storage 是不同來源的載入方式，不必逐一解釋每種工具。</p>
+    <p>說明取捨：把報表加工邏輯與排程集中，方便同一個團隊維護，也要求共用的指標口徑、品質檢查和來源追溯。這頁沒有量化成效，口頭不要補未確認的節省時間或錯誤率。</p>
+    <p>收在個人觀察：資料工程的工作不只把資料放進平台，還要讓下一個使用者知道數字從哪裡來、出錯時怎麼查。</p>
   </div>
 </section>
 
 <section class="slide" id="case-compute" role="group" aria-label="案例二：大數據專案 Job Queue API 任務系統">
   <div class="pad">
     <div class="case-banner">
-      <div><p class="eyebrow"><span class="num">06</span> 案例二 · COMPUTE</p><h2>讓 ETL 任務<br>可以排隊、追蹤與交付</h2></div>
+      <div><p class="eyebrow"><span class="num">06</span> 案例二 · COMPUTE</p><h2>讓 ETL 任務<br>可以提交、排隊與追蹤</h2></div>
       <p class="case-label">大數據專案</p>
     </div>
 
@@ -113,42 +111,40 @@
         <h3>程式要上傳，<br>執行後也難追蹤</h3>
         <div class="compute-before"><span>編輯程式</span><b>→</b><span>上傳伺服器</span><b>→</b><span>Crontab／人工執行</span></div>
         <ul class="compute-pain-list">
-          <li>Spark 程式不易呼叫</li>
-          <li>大量 Log 難以查找</li>
           <li>ETL 邏輯集中，不易維護</li>
-          <li>執行狀態不易追蹤</li>
+          <li>執行狀態與 Log 難查</li>
         </ul>
       </aside>
 
       <div class="compute-main">
         <div class="compute-flow-label">
-          <span class="mono">JOB QUEUE API / SYSTEM MAP</span>
+          <span class="mono">任務如何提交與執行</span>
         </div>
         <div class="compute-system" aria-label="Job Queue API 提交與背景執行架構">
-          <div class="compute-system__lane compute-system__lane--submit">01 / SUBMIT & QUEUE</div>
+          <div class="compute-system__lane compute-system__lane--submit">01 / 提交與排隊</div>
           <div class="compute-node compute-node--client compute-system__client"><span class="mono">CLIENT</span><strong>提交任務</strong></div>
           <span class="compute-system__arrow compute-system__arrow--client" aria-hidden="true">→</span>
           <div class="compute-node compute-node--api compute-system__api"><span class="mono">REST API</span><strong>建立 Job</strong></div>
           <span class="compute-system__arrow compute-system__arrow--api" aria-hidden="true">→</span>
           <div class="compute-node compute-node--queue compute-system__queue"><span class="mono">RABBITMQ</span><strong>ready queue</strong></div>
-          <div class="compute-system__return"><strong>Job ID 回傳 Client</strong><span>提交完成即可查詢，不必等待 Spark 跑完</span></div>
-          <div class="compute-system__async"><span>非同步邊界</span><b>任務進入 queue 後，由 Consumer 背景執行</b></div>
+          <div class="compute-system__return"><strong>回傳 Job ID</strong><span>提交者可查狀態</span></div>
+          <div class="compute-system__async"><span>背景執行</span><b>Client 不必等待 Spark 完成</b></div>
           <span class="compute-system__down" aria-hidden="true">↓</span>
-          <div class="compute-system__lane compute-system__lane--execute">02 / EXECUTE & STORE</div>
+          <div class="compute-system__lane compute-system__lane--execute">02 / 執行與保存</div>
           <div class="compute-node compute-node--consumer compute-system__consumer"><span class="mono">CONSUMER</span><strong>取出任務</strong></div>
           <span class="compute-system__arrow compute-system__arrow--spark" aria-hidden="true">→</span>
           <div class="compute-node compute-node--spark compute-system__spark"><span class="mono">SPARK</span><strong>執行 ETL</strong></div>
           <span class="compute-system__arrow compute-system__arrow--hdfs" aria-hidden="true">→</span>
           <div class="compute-node compute-node--hdfs compute-system__hdfs"><span class="mono">HDFS</span><strong>保存結果</strong></div>
           <div class="compute-system__store">
-            <span class="mono">JOB STATE / METADATA · API + CONSUMER</span>
-            <div class="compute-system__store-copy"><strong>MySQL</strong><span>保存 Job ID、狀態、SQL 與 HDFS 輸出路徑</span></div>
+            <span class="mono">任務狀態</span>
+            <div class="compute-system__store-copy"><strong>MySQL</strong><span>Job ID、狀態與輸出路徑</span></div>
             <div class="compute-system__states" aria-label="任務狀態：ready、running、done 或 error"><span>ready</span><i>→</i><span>running</span><i>→</i><span>done</span><i>/</i><span>error</span></div>
           </div>
           <div class="compute-system__logs">
-            <span class="mono">SPARK LOGS</span>
+            <span class="mono">執行紀錄</span>
             <strong>Log System</strong>
-            <span>集中查看執行紀錄與錯誤</span>
+            <span>集中查看錯誤</span>
           </div>
         </div>
       </div>
@@ -157,7 +153,7 @@
     <div class="compute-bottom">
       <div class="compute-evidence">
         <div class="compute-evidence-head"><span class="mono">DAILY PIPELINE TIME</span></div>
-        <div class="compute-duration-flow" aria-label="Allen 回憶的每日資料管線處理時間：從 MapReduce 改用 Spark，後續整合 Spark 與 Job Queue 系統">
+        <div class="compute-duration-flow" aria-label="每日資料管線處理時間：從 MapReduce 改用 Spark，後續整合 Spark 與 Job Queue 系統">
           <div class="compute-duration-stage compute-duration-stage--before">
             <span class="mono">原流程</span>
             <strong>MapReduce</strong>
@@ -177,28 +173,18 @@
           </div>
         </div>
       </div>
-      <div class="compute-decision">
-        <span class="mono">WHAT CHANGED</span>
-        <ul class="compute-changes">
-          <li>任務經 API 提交與排隊，不必再手動進伺服器執行</li>
-          <li>每個任務都有 Job ID，可追蹤 ready／running／done／error 狀態</li>
-        </ul>
+      <div class="compute-decision slide-takeaway">
+        <span class="mono">改造後</span>
+        <p>任務失敗時，提交者知道停在哪裡，工程師也找得到 Log。</p>
       </div>
     </div>
   </div>
   <div class="slide-notes" hidden>
-    <p><strong>這張約 4–6 分鐘。分享節奏規劃：</strong>0:00–1:00 講原本痛點與人工流程限制；1:00–2:30 拆解 Job Queue API 架構與 RabbitMQ／MySQL 的責任分工；2:30–3:30 用一個任務失敗的情境說明狀態追蹤與排錯；3:30–4:30 說明每日流程時間是概估，以及為什麼不能把改善歸因於 Queue；4:30–5:30 收束到工程取捨與資料工程職涯啟示。</p>
-    <p><strong>原本的工作方式與痛點：</strong>原始投影片整理出舊有流程：編輯程式 → 上傳到伺服器 → Crontab 或人工執行。當時面臨的痛點不只是執行速度慢，而是責任混在一起：Spark 程式不易呼叫、大量 Log 集中難以排查、ETL 邏輯全部綁在單一腳本不易維護，且執行進度與狀態完全不可追蹤。</p>
-    <p><strong>架構流程與非同步邊界：</strong>重構後分為清楚的水平鏈路：Client 透過 REST API 提交任務，API 建立 Job ID 並立即回傳，同時將工作推送到 RabbitMQ ready queue；Consumer 訂閱 queue，取出任務後啟動 Spark 分散式運算；處理後的資料寫入 HDFS。這當中的「非同步邊界」在於：Client 與 API 完成提交後就結束同步等待，後續排隊與 Spark 執行完全在背景進行，避免長時間佔用連線。</p>
-    <p><strong>為什麼 RabbitMQ 負責任務傳遞／排隊，而 MySQL 負責持久化狀態／metadata：</strong>這代表兩種完全不同的系統責任。RabbitMQ 是傳遞性、暫態的訊息佇列，專長是緩衝削峰、任務解耦與分派（Consumer 處理完即消費刪除），但不適合用來做狀態查詢、複雜關聯或長期追蹤；MySQL 則是持久化儲存，負責保存 Job ID、請求參數、SQL 內容、目前狀態與產出路徑。兩者搭配是為了讓「任務分派」與「狀態查詢」各自獨立演進。另外 Log System 則專門收集 Spark 執行日誌，讓排查錯誤不必回到各節點翻查檔案。</p>
-    <p><strong>Job lifecycle：</strong>以 ready → running → done／error 追蹤。API 建立任務時寫入 ready，Consumer 取出任務並啟動 Spark 時更新為 running，Spark 成功結束寫入 HDFS 則更新為 done，若執行失敗則記錄為 error。提交者可憑 Job ID 隨時回到 API／MySQL 查詢目前狀態與輸出路徑。</p>
-    <p><strong>用一個問題帶出狀態追蹤：</strong>任務排隊後如果執行失敗，提交者怎麼透過 Job ID 知道它停在哪個狀態、去哪裡看 Log？這說明了為什麼任務狀態要能查、執行紀錄要能集中查看。把它當成架構判斷的提問，不延伸宣稱自動重試或補救機制已經實作。</p>
-    <p><strong>每日資料管線時間的解讀：</strong>依 Allen 這次提供的概略回憶，原本使用 MapReduce 時，每日流程可能需要約 7–8 小時；後來改用 Spark，並整合 Job Queue 系統後，整體約 1–2 小時可完成。這是整體流程的概估，不是各處理引擎的獨立 benchmark；不能把全部改善歸因於 Queue。個別作業、資料範圍、硬體、是否計入排隊時間與計時口徑可能不同，精確數據仍待確認。</p>
-    <p><strong>工程 Trade-off：</strong>做系統不是盲目加技術。換回的是：提交與執行解耦、任務狀態可查、運算引擎可獨立擴展；付出的代價則是：狀態機一致性、訊息重複消費防範與監控維運成本。</p>
-    <p><strong>資訊邊界與待 Allen 確認事項：</strong>
-1. 原始投影片支持的事實：Client／REST API／RabbitMQ／MySQL／Consumer／Spark／HDFS 元件架構；ready／running／done／error 狀態劃分；從 MapReduce 改用 Spark、後續整合 Job Queue 系統的演進；原本人工執行與 Log 難查之痛點；Git Flow 多 feature 分支規劃。個別產品耗時不在本頁呈現。
-2. 整理出的教學推導：4–6 分鐘節奏配置；提交／佇列／執行／觀測之責任解耦視角；RabbitMQ 與 MySQL 各司其職之設計理由；用任務失敗的提問說明狀態追蹤與排錯；工程取捨的整理方式。
-3. 待 Allen 確認事項：Gamania 公司名稱是否可公開具名；專案發生年份、團隊規模與個人實際負責項目；概估時間的資料範圍、硬體、是否包含排隊時間與測量口徑；RabbitMQ 的 ack／retry／DLQ／重複消費防範機制；MySQL 與 Queue 一致性設計；系統是否正式 production 上線及維運規模。
-4. 本頁不宣稱的事項：不宣稱正式 SLA、生產環境零故障、完整自動重試機制，不加入來源沒有證據的 scp、跳板機、ps aux、HTTP 202/200、Spark Driver、幾百 MB Log 等未證實細節。</p>
+    <p><strong>36:00–41:00｜5 分鐘</strong></p>
+    <p>先講舊流程的兩個痛點：程式得上傳伺服器才執行，提交後難查任務狀態與錯誤紀錄。不要逐條朗讀左欄。</p>
+    <p>沿主圖走一次：Client 向 API 提交任務取得 Job ID，RabbitMQ 用於排隊與分派，Consumer 背景啟動 Spark，結果存入 HDFS；MySQL 留下可查詢的任務狀態與輸出路徑，Log System 集中看執行紀錄。RabbitMQ 支援訊息持久化；確認與移除訊息的時機取決於實際設定，本案例不延伸未核對的重試機制。</p>
+    <p>問聽眾一個問題：任務失敗時，提交者怎麼知道停在哪裡？用 ready、running、done／error 和 Log 說明「可追蹤」的價值。</p>
+    <p>底部時間圖只作流程演進的概略說明：原先 MapReduce 約 7–8 小時，改用 Spark 並整合後續系統後約 1–2 小時；不要把這說成 Queue 單獨帶來的效果，也不當成兩個引擎的嚴格效能比較。</p>
+    <p>收在取捨：提交與執行分開後，狀態能查，但系統也多了狀態同步與監控工作。下一段談 AI 時代，仍要有人理解這些系統責任。</p>
   </div>
 </section>

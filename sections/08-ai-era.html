@@ -1,6 +1,9 @@
 <section class="slide slide--dark section-divider" id="ai-divider" role="group" aria-label="AI 時代該怎麼準備：章節開場">
   <div class="pad"><p class="section-code">07 / AI ERA</p><h2>AI 會改變工作內容，<br>結果仍要有人負責</h2><div class="divider-line"></div><p class="section-intro">程式與答案產生得更快之後，問題定義、驗證、系統脈絡與責任判斷會更常出現在日常工作裡。</p></div>
-  <div class="slide-notes" hidden><p>這一段別做成 AI 工具清單。重點是哪些能力會被放大、哪些責任不能外包給模型。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>41:00–41:30｜0.5 分鐘</strong></p>
+    <p>轉場：AI 讓初稿更快出現，接下來談哪些工作會變、學生可以怎麼練習。</p>
+  </div>
 </section>
 
 <section class="slide" id="ai-changes" role="group" aria-label="AI 時代：被加速與被放大的工作">
@@ -8,9 +11,14 @@
     <p class="eyebrow"><span class="num">07</span> AI 會改變什麼？</p>
     <h2>AI 讓產出變快，<br>錯誤也可能走得更遠</h2>
     <div class="ai-layout"><div class="ai-column"><h3>被加速的部分</h3><ul class="ai-list"><li>把自然語言轉成 SQL、程式或文件初稿</li><li>探索資料、解釋錯誤、產生測試案例</li><li>比較常見架構與實作方式</li><li>讓一個人先做出原本要多人一起起手的初版</li></ul></div><div class="ai-column"><h3>因此更重要的部分</h3><ul class="ai-list"><li>判斷需求與資料是否真的對得上</li><li>驗證答案、理解邊界、找出模型沒看見的例外</li><li>知道權限、資安、成本與穩定性不能靠猜</li><li>為上線後的結果、失效與影響範圍負責</li></ul></div></div>
-    <p class="quote">AI 可以很快寫出答案；<strong>能不能上線</strong>，還是要由工程和業務一起判斷。</p>
+    <p class="quote slide-takeaway">AI 可以很快寫出答案；<strong>能不能上線</strong>，還是要由工程和業務一起判斷。</p>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>承認 AI 會提高個人產出，避免用「AI 不會取代人」這種空泛句子帶過。產出速度提高後，驗證、脈絡與責任會更重要。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>41:30–44:30｜3 分鐘</strong></p>
+    <p>用一個具體例子：AI 可以幫忙寫 SQL 或產出報表初稿；如果欄位定義、權限或資料來源有問題，錯誤也會更快進入下游。</p>
+    <p>左欄只點名被加速的工作，不逐項念完。右欄聚焦上線前需要有人做的判斷：需求有沒有對上、答案能否驗證、失敗會影響誰。</p>
+    <p>收束後直接轉到學生可以練的能力，不再重複「AI 不會取代人」的口號。</p>
+  </div>
 </section>
 
 <section class="slide" id="ai-prep" role="group" aria-label="AI 時代：需要準備的能力">
@@ -18,9 +26,13 @@
     <p class="eyebrow"><span class="num">07</span> 怎麼準備？</p>
     <h2>寫程式之外，<br>也要學會審查 AI 寫的系統</h2>
     <div class="prepare-steps"><article class="prepare-step"><span class="mono">01 / FOUNDATION</span><h3>把底層補起來</h3><p>SQL、Python、資料結構、網路、Linux、版本控制與基礎統計。基礎不夠，很難知道答案哪裡不對。</p></article><article class="prepare-step"><span class="mono">02 / CONTEXT</span><h3>學會看完整流程</h3><p>不能只看一段 query；還要追來源、轉換、儲存、權限、部署、監控與下游使用。</p></article><article class="prepare-step"><span class="mono">03 / EVIDENCE</span><h3>用測試與觀測驗證</h3><p>用資料測試、效能測試、錯誤情境與真實案例去驗證它。「看起來合理」還不夠。</p></article><article class="prepare-step"><span class="mono">04 / JUDGEMENT</span><h3>練習說清楚取捨</h3><p>為什麼這樣做？成本是什麼？什麼情況會失效？誰需要知道？這些問題比 prompt 技巧更耐用。</p></article></div>
-    <p class="kicker"><strong>AI 讓初版更快；真正拉開差距的是，你能不能把結果驗清楚，並對它負責。</strong></p>
   </div>
-  <div class="slide-notes" hidden><p><strong>這張約 5 分鐘。</strong>給學生具體路徑：底層、脈絡、證據、判斷。可以示範讓 AI 產生一段 SQL，但接著問資料定義、NULL、重複、時區與效能，讓大家看到審查比生成更關鍵。</p></div>
+  <div class="slide-notes" hidden>
+    <p><strong>44:30–47:30｜3 分鐘</strong></p>
+    <p>四張卡片照順序帶過：先有 SQL／Python 等基礎，再理解資料從來源到下游的流程，用測試檢查 AI 產出的結果，最後說得清楚方案的限制與成本。</p>
+    <p>只給一個練習例子：讓 AI 寫一段 SQL，自己檢查欄位定義、空值、重複資料與結果是否符合問題。這比列出所有工具更容易讓學生帶走。</p>
+    <p>最後請學生挑一項能力開始練習，接到下一頁的資料流作品；不再重講「初版更快、仍要負責」。</p>
+  </div>
 </section>
 
 <section class="slide" id="ai-90days" role="group" aria-label="AI 時代：設計一條可驗證的資料流">
@@ -59,16 +71,14 @@
       </aside>
     </div>
 
-    <div class="project-takeaway">
-      <strong>資料流不只要跑通，還要能說明、能驗證、出錯能處理。</strong>
-      <span>把假設、測試與取捨一起放進作品。</span>
+    <div class="project-takeaway slide-takeaway">
+      <strong>作品要說得清楚資料從哪裡來、怎麼驗證、出錯怎麼處理。</strong>
     </div>
   </div>
   <div class="slide-notes" hidden>
-    <p><strong>這張約 4–5 分鐘。</strong>重點不是規定幾天做完，而是讓作品呈現一條完整、能被追問的資料流。</p>
-    <p><strong>先定義問題：</strong>先說清楚誰需要這份資料、要做什麼決策，或原本哪個工作很難完成。問題定不清楚，後面即使把資料搬進倉庫，也可能沒人會用。</p>
-    <p><strong>確認資料與處理：</strong>列出資料來源、來源負責人、權限、更新頻率與資料限制，再說明清理、關聯、轉換和結果粒度。用一張架構圖交代資料如何流動，以及為什麼選批次或即時處理、如何選儲存和排程方式。</p>
-    <p><strong>驗證可靠性：</strong>準備幾種測試：輸入資料品質、轉換結果、空值／重複等邊界情況，以及流程失敗時是否能發現。再說明重試、避免重複寫入和補資料如何設計；如果資料量增加，估計哪裡會先成為瓶頸，成本和延遲如何變化。</p>
-    <p><strong>交付作品：</strong>讓別人能看懂問題、資料來源、處理步驟、架構取捨、測試結果和已知限制。作品不必包成產品，也不必一開始就做很大，但要能說明它解決什麼問題，以及資料流在正常和失敗時各怎麼運作。</p>
+    <p><strong>47:30–50:00｜2.5 分鐘</strong></p>
+    <p>給學生一個可開始的作品：選一個真實問題，說清楚誰會用結果，再交代來源、處理、交付四步。</p>
+    <p>右側只挑兩項優先檢查：數字能否驗證；失敗後能否發現並處理。擴展與成本是作品成熟後再補的思考，不要求一開始做完所有項目。</p>
+    <p>結尾提醒：作品要能說明選擇、展示測試結果與已知限制。到 50 分鐘準時轉入 Q&amp;A。</p>
   </div>
 </section>
